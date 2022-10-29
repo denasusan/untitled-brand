@@ -468,7 +468,7 @@ const HomePage = () => {
                 </div>
 
                 {
-                    chooseQuality == "medium" &&
+                    // chooseQuality == "medium" &&
                     <div id="field-1" className="w-full pl-16 pr-10 grid grid-cols-10 gap-4">
                         <div className="col-span-10 pl-4">
                             <div className="w-full pt-6">
