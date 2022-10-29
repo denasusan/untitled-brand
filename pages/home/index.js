@@ -380,6 +380,26 @@ const HomePage = () => {
     ]
     const [chooseAuthenticLabel, setChooseAuthenticLabel] = useState("")
 
+    const zippers = [
+        {
+            "name": "zipper full dengan saku belakang",
+            "value": "zipper-full-dengan-saku-belakang"
+        },
+        {
+            "name": "zipper full tanpa saku belakang",
+            "value": "zipper-full-tanpa-saku-belakang"
+        },
+        {
+            "name": "zipper setengah dengan saku belakang",
+            "value": "zipper-setengah-dengan-saku-belakang"
+        },
+        {
+            "name": "zipper setengah tanpa saku belakang",
+            "value": "zipper-setengah-tanpa-saku-belakang"
+        }
+    ]
+    const [chooseZipper, setChooseZipper] = useState(zippers[0].value);
+
     // useEffect(() => {
     //     setImageDesign(URL.createObjectURL(imageDesignFile))
     // }, [imageDesignFile])
@@ -447,7 +467,8 @@ const HomePage = () => {
                                     Kualitas
                                 </InputLabel>
                                 <NativeSelect
-                                    defaultValue={30}
+                                    key={"1"}
+                                    // defaultValue={30}
                                     inputProps={{
                                         name: 'quality',
                                         id: 'quality',
@@ -477,7 +498,8 @@ const HomePage = () => {
                                         Jenis Jersey
                                     </InputLabel>
                                     <NativeSelect
-                                        defaultValue={30}
+                                        // defaultValue={30}
+                                        key={"2"}
                                         inputProps={{
                                             name: 'jersey',
                                             id: 'jersey',
@@ -502,7 +524,8 @@ const HomePage = () => {
                                         Jenis Potongan
                                     </InputLabel>
                                     <NativeSelect
-                                        defaultValue={30}
+                                        // defaultValue={30}
+                                        key={"3"}
                                         inputProps={{
                                             name: 'cutting',
                                             id: 'cutting',
@@ -550,6 +573,34 @@ const HomePage = () => {
                                 </FormControl>
                             </div>
                         </div>
+                        {
+                            chooseJersey == "sepeda"  &&
+                            <div className="col-span-10 pl-4">
+                                <div className="w-full pt-6">
+                                    <FormControl fullWidth className="w-full pt-10">
+                                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                                            Jenis Zipper
+                                        </InputLabel>
+                                        <NativeSelect
+                                            // defaultValue={30}
+                                            key={"4"}
+                                            inputProps={{
+                                                name: 'zipper',
+                                                id: 'zipper',
+                                            }}
+                                            value={chooseZipper}
+                                            onChange={(val) => setChooseZipper(val.target.value)}
+                                        >
+                                            {
+                                                zippers.map((item) => {
+                                                    return <option key={item.name} value={item.value}>{item.name}</option>
+                                                })
+                                            }
+                                        </NativeSelect>
+                                    </FormControl>
+                                </div>
+                            </div>
+                        }
                         <div className="col-span-10 pl-4">
                             <div className="w-full pt-6">
                                 <FormControl fullWidth className="w-full pt-10">
@@ -557,7 +608,8 @@ const HomePage = () => {
                                         Jenis Pola
                                     </InputLabel>
                                     <NativeSelect
-                                        defaultValue={30}
+                                        // defaultValue={30}
+                                        key={"5"}
                                         inputProps={{
                                             name: 'pola',
                                             id: 'pola',
@@ -586,7 +638,8 @@ const HomePage = () => {
                                         Apakah design sudah ada ?
                                     </InputLabel>
                                     <NativeSelect
-                                        defaultValue={30}
+                                        // defaultValue={30}
+                                        key={"6"}
                                         inputProps={{
                                             name: 'isDesignReady',
                                             id: 'isDesignReady',
@@ -640,7 +693,8 @@ const HomePage = () => {
                                         Type Kerah
                                     </InputLabel>
                                     <NativeSelect
-                                        defaultValue={30}
+                                        // defaultValue={30}
+                                        key={"7"}
                                         inputProps={{
                                             name: 'typeKerah',
                                             id: 'typeKerah',
@@ -667,7 +721,8 @@ const HomePage = () => {
                                         }
                                     </InputLabel>
                                     <NativeSelect
-                                        defaultValue={30}
+                                        // defaultValue={30}
+                                        key={"8"}
                                         inputProps={{
                                             name: 'jenisKerah',
                                             id: 'jenisKerah',
@@ -697,7 +752,8 @@ const HomePage = () => {
                                         Pilih Motif Kain
                                     </InputLabel>
                                     <NativeSelect
-                                        defaultValue={30}
+                                        // defaultValue={30}
+                                        key={"9"}
                                         inputProps={{
                                             name: 'motive',
                                             id: 'motive',
@@ -740,7 +796,8 @@ const HomePage = () => {
                                             Jenis Tulisan Bisban
                                         </InputLabel>
                                         <NativeSelect
-                                            defaultValue={30}
+                                            // defaultValue={30}
+                                            key={"10"}
                                             inputProps={{
                                                 name: 'jenisTulisanBisban',
                                                 id: 'jenisTulisanBisban',
@@ -793,7 +850,8 @@ const HomePage = () => {
                                             Pilihan Design Inner
                                         </InputLabel>
                                         <NativeSelect
-                                            defaultValue={30}
+                                            // defaultValue={30}
+                                            key={"11"}
                                             inputProps={{
                                                 name: 'pilihanDesignInner',
                                                 id: 'pilihanDesignInner',
@@ -847,7 +905,8 @@ const HomePage = () => {
                                             Pilih Authentic Label
                                         </InputLabel>
                                         <NativeSelect
-                                            defaultValue={30}
+                                            // defaultValue={30}
+                                            key={"12"}
                                             inputProps={{
                                                 name: 'pilihanDesignInner',
                                                 id: 'pilihanDesignInner',
