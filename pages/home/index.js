@@ -420,7 +420,7 @@ const HomePage = () => {
             </header> */}
 
             <main className="pb-10 bg-white">
-                <div id="field-2" className="w-full pl-16 pr-10 grid grid-cols-10 gap-4 pt-10">
+                <div id="field-2" className="w-full pl-4 pr-6 grid grid-cols-10 gap-4 pt-10">
                     <div className="col-span-10 pl-4">
                         <TextField id="user-name" label="Nama Kamu" variant="standard" className="w-full"
                             value={username}
@@ -469,7 +469,7 @@ const HomePage = () => {
 
                 {
                     // chooseQuality == "medium" &&
-                    <div id="field-1" className="w-full pl-16 pr-10 grid grid-cols-10 gap-4">
+                    <div id="field-1" className="w-full pl-4 pr-6 grid grid-cols-10 gap-4">
                         <div className="col-span-10 pl-4">
                             <div className="w-full pt-6">
                                 <FormControl fullWidth className="w-full pt-10">
@@ -578,7 +578,7 @@ const HomePage = () => {
                 }
 
                 {
-                    <div id="field-3" className="w-full pl-16 pr-10 grid grid-cols-10 gap-4">
+                    <div id="field-3" className="w-full pl-4 pr-6 grid grid-cols-10 gap-4">
                         <div className="col-span-10 pl-4">
                             <div className="w-full pt-6">
                                 <FormControl fullWidth className="w-full pt-10">
@@ -895,7 +895,7 @@ const HomePage = () => {
                     </div>
                 }
                 {
-                    <div id="field-2" className="w-full pl-16 pr-10 grid grid-cols-10 gap-4">
+                    <div id="field-2" className="w-full pl-4 pr-6 grid grid-cols-10 gap-4">
                         <div className="col-span-10 pl-4 pt-8">
                             <TextField id="sum-pcs" label="Jumlah per-pcs" variant="standard" className="w-full"
                                 value={sumPcs}
