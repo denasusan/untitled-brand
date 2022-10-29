@@ -419,7 +419,7 @@ const HomePage = () => {
                 </div>
             </header> */}
 
-            <main className="pb-10">
+            <main className="pb-10 bg-white">
                 <div id="field-2" className="w-full pl-16 pr-10 grid grid-cols-10 gap-4 pt-10">
                     <div className="col-span-10 pl-4">
                         <TextField id="user-name" label="Nama Kamu" variant="standard" className="w-full"
