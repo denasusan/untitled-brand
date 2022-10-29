@@ -611,6 +611,9 @@ const HomePage = () => {
                                 // <img id="iframe-target" className="w-56 h-auto" />
 
                             }
+                            <p className="text-sm mb-2">
+                                Upload Design Image
+                            </p>
                             <input
                                 type="file"
                                 aria-label="Upload designmu"
@@ -765,6 +768,9 @@ const HomePage = () => {
                                     // <img id="iframe-target" className="w-56 h-auto" />
 
                                 }
+                                <p className="text-sm mb-2">
+                                    Upload Design Tulisan Bisban
+                                </p>
                                 <input
                                     type="file"
                                     aria-label="Upload tulisan bisban"
@@ -816,6 +822,9 @@ const HomePage = () => {
                                     // <img id="iframe-target" className="w-56 h-auto" />
 
                                 }
+                                <p className="text-sm mb-2">
+                                    Upload Design Inner
+                                </p>
                                 <input
                                     type="file"
                                     aria-label="Upload Design Inner (Sablon DTF)"
@@ -867,9 +876,12 @@ const HomePage = () => {
                                     // <img id="iframe-target" className="w-56 h-auto" />
 
                                 }
+                                <p className="text-sm mb-2">
+                                    Upload Authentic Label
+                                </p>
                                 <input
                                     type="file"
-                                    aria-label="Upload Design Inner (Sablon DTF)"
+                                    aria-label="Upload Authentic Label"
                                     onChange={(val) => {
                                         // var blobObj = new Blob(val.target.files[0], { type: "application/pdf" });
                                         // var url = window.URL.createObjectURL(blobObj);
@@ -884,7 +896,7 @@ const HomePage = () => {
                 }
                 {
                     <div id="field-2" className="w-full pl-16 pr-10 grid grid-cols-10 gap-4">
-                        <div className="col-span-10 pl-4">
+                        <div className="col-span-10 pl-4 pt-8">
                             <TextField id="sum-pcs" label="Jumlah per-pcs" variant="standard" className="w-full"
                                 value={sumPcs}
                                 onChange={(val) => {
@@ -898,6 +910,9 @@ const HomePage = () => {
                                 // <img id="iframe-target" className="w-56 h-auto" />
 
                             }
+                            <p className="text-sm mb-2">
+                                Upload file berisi Nama, no, size, catatan untuk per-pcs
+                            </p>
                             <input
                                 type="file"
                                 aria-label="Upload File Nama, no, size, catatan untuk per-pcs"
