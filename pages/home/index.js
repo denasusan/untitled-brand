@@ -1,4 +1,4 @@
-import { Button, FormControl, FormControlLabel, FormLabel, InputLabel, NativeSelect, Radio, RadioGroup, TextField } from "@material-ui/core";
+import { Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, InputLabel, MenuItem, NativeSelect, Radio, RadioGroup, TextField } from "@material-ui/core";
 import Head from "next/head"
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -13,6 +13,8 @@ const HomePage = () => {
     const [imageTulisanBisban, setImageTulisanBisban] = useState("");
     const [imageDesignInner, setImageDesignInner] = useState("");
     const [imageAuthenticLabel, setImageAuthenticLabel] = useState("");
+    const [imageBisbanBawah, setImageBisbanBawah] = useState("");
+    const [imageCareLabel, setImageCareLabel] = useState("");
     const [fileUkuran, setFileUkuran] = useState();
     const [sumPcs, setSumPcs] = useState("");
 
@@ -182,7 +184,7 @@ const HomePage = () => {
             "value": "celana-lengan-panjang"
         },
     ]
-    const [chooseCutting, setChooseCutting] = useState("");
+    const [chooseCutting, setChooseCutting] = useState([]);
 
     const polas = [
         {
@@ -304,8 +306,16 @@ const HomePage = () => {
             "value": "milano"
         },
         {
+            "name": "Milano UV",
+            "value": "milano-uv"
+        },
+        {
             "name": "Benzema",
             "value": "benzema"
+        },
+        {
+            "name": "Benzema UV",
+            "value": "benzema-uv"
         },
         {
             "name": "Piqe",
@@ -399,6 +409,48 @@ const HomePage = () => {
         }
     ]
     const [chooseZipper, setChooseZipper] = useState(zippers[0].value);
+
+    const careLabels = [
+        {
+            "name": "Pilihan 1",
+            "value": "pilihan-1"
+        },
+        {
+            "name": "Pilihan 2",
+            "value": "pilihan-2"
+        },
+        {
+            "name": "Pilihan 3",
+            "value": "pilihan-3"
+        },
+        {
+            "name": "Punya design sendiri",
+            "value": "punya design sendiri"
+        },
+    ]
+    const [chooseCareLabel, setchooseCareLabel] = useState("")
+
+    const bisbanBawah = [
+        {
+            "name": "Pilihan 1",
+            "value": "pilihan-1"
+        },
+        {
+            "name": "Pilihan 2",
+            "value": "pilihan-2"
+        },
+        {
+            "name": "Pilihan 3",
+            "value": "pilihan-3"
+        },
+        {
+            "name": "Punya design sendiri",
+            "value": "punya design sendiri"
+        },
+    ]
+    const [chooseBisbanBawah, setchooseBisbanBawah] = useState("")
+
+
 
     // useEffect(() => {
     //     setImageDesign(URL.createObjectURL(imageDesignFile))
@@ -519,11 +571,142 @@ const HomePage = () => {
                         </div>
                         <div className="col-span-10 pl-4">
                             <div className="w-full pt-6">
-                                <FormControl fullWidth className="w-full pt-10">
-                                    <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                                <FormControl fullWidth className="flex flex-col justify-start items-start pt-10">
+                                    {/* <InputLabel variant="standard" htmlFor="uncontrolled-native">
                                         Jenis Potongan
-                                    </InputLabel>
-                                    <NativeSelect
+                                    </InputLabel> */}
+                                    <label>Jenis potongan</label>
+                                    <FormGroup>
+                                        {
+                                            chooseJersey == "futsal" ?
+                                                cuttingFutsal.map((item, index) => {
+                                                    return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                        var cuttingTemp = chooseCutting;
+
+                                                        if (val.target.checked == true) {
+                                                            cuttingTemp.push(`${val.target.value}`);
+                                                        } else {
+                                                            for (var i = 0; i < cuttingTemp.length; i++) {
+                                                                if (cuttingTemp[i] == item.value) {
+                                                                    cuttingTemp.splice(i, 1);
+                                                                }
+                                                                // console.log("TERSISA", cuttingTemp[i]);
+                                                            }
+                                                        }
+                                                        setChooseCutting(cuttingTemp);
+                                                    }} />} label={item.name} />
+                                                }) :
+                                                chooseJersey == "basket" ?
+                                                    cuttingBasket.map((item, index) => {
+                                                        return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                            var cuttingTemp = chooseCutting;
+
+                                                            if (val.target.checked == true) {
+                                                                cuttingTemp.push(`${val.target.value}`);
+                                                            } else {
+                                                                for (var i = 0; i < cuttingTemp.length; i++) {
+                                                                    if (cuttingTemp[i] == item.value) {
+                                                                        cuttingTemp.splice(i, 1);
+                                                                    }
+                                                                    // console.log("TERSISA", cuttingTemp[i]);
+                                                                }
+                                                            }
+                                                            setChooseCutting(cuttingTemp);
+                                                        }} />} label={item.name} />
+                                                    }) :
+                                                    chooseJersey == "gaming" ?
+                                                        cuttingGaming.map((item, index) => {
+                                                            return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                                var cuttingTemp = chooseCutting;
+
+                                                                if (val.target.checked == true) {
+                                                                    cuttingTemp.push(`${val.target.value}`);
+                                                                } else {
+                                                                    for (var i = 0; i < cuttingTemp.length; i++) {
+                                                                        if (cuttingTemp[i] == item.value) {
+                                                                            cuttingTemp.splice(i, 1);
+                                                                        }
+                                                                        // console.log("TERSISA", cuttingTemp[i]);
+                                                                    }
+                                                                }
+                                                                setChooseCutting(cuttingTemp);
+                                                            }} />} label={item.name} />
+                                                        }) :
+                                                        chooseJersey == "running" ?
+                                                            cuttingRunning.map((item, index) => {
+                                                                return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                                    var cuttingTemp = chooseCutting;
+
+                                                                    if (val.target.checked == true) {
+                                                                        cuttingTemp.push(`${val.target.value}`);
+                                                                    } else {
+                                                                        for (var i = 0; i < cuttingTemp.length; i++) {
+                                                                            if (cuttingTemp[i] == item.value) {
+                                                                                cuttingTemp.splice(i, 1);
+                                                                            }
+                                                                            // console.log("TERSISA", cuttingTemp[i]);
+                                                                        }
+                                                                    }
+                                                                    setChooseCutting(cuttingTemp);
+                                                                }} />} label={item.name} />
+                                                            }) :
+                                                            chooseJersey == "tni" ?
+                                                                cuttingTNI.map((item, index) => {
+                                                                    return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                                        var cuttingTemp = chooseCutting;
+
+                                                                        if (val.target.checked == true) {
+                                                                            cuttingTemp.push(`${val.target.value}`);
+                                                                        } else {
+                                                                            for (var i = 0; i < cuttingTemp.length; i++) {
+                                                                                if (cuttingTemp[i] == item.value) {
+                                                                                    cuttingTemp.splice(i, 1);
+                                                                                }
+                                                                                // console.log("TERSISA", cuttingTemp[i]);
+                                                                            }
+                                                                        }
+                                                                        setChooseCutting(cuttingTemp);
+                                                                    }} />} label={item.name} />
+                                                                }) :
+                                                                chooseJersey == "sepeda" ?
+                                                                    cuttingSepeda.map((item, index) => {
+                                                                        return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                                            var cuttingTemp = chooseCutting;
+
+                                                                            if (val.target.checked == true) {
+                                                                                cuttingTemp.push(`${val.target.value}`);
+                                                                            } else {
+                                                                                for (var i = 0; i < cuttingTemp.length; i++) {
+                                                                                    if (cuttingTemp[i] == item.value) {
+                                                                                        cuttingTemp.splice(i, 1);
+                                                                                    }
+                                                                                    // console.log("TERSISA", cuttingTemp[i]);
+                                                                                }
+                                                                            }
+                                                                            setChooseCutting(cuttingTemp);
+                                                                        }} />} label={item.name} />
+                                                                    }) :
+                                                                    cuttingLainnya.map((item, index) => {
+                                                                        return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                                            var cuttingTemp = chooseCutting;
+
+                                                                            if (val.target.checked == true) {
+                                                                                cuttingTemp.push(`${val.target.value}`);
+                                                                            } else {
+                                                                                for (var i = 0; i < cuttingTemp.length; i++) {
+                                                                                    if (cuttingTemp[i] == item.value) {
+                                                                                        cuttingTemp.splice(i, 1);
+                                                                                    }
+                                                                                    // console.log("TERSISA", cuttingTemp[i]);
+                                                                                }
+                                                                            }
+                                                                            setChooseCutting(cuttingTemp);
+                                                                        }} />} label={item.name} />
+                                                                    })
+                                        }
+                                    </FormGroup>
+
+                                    {/* <NativeSelect
                                         // defaultValue={30}
                                         key={"3"}
                                         inputProps={{
@@ -569,12 +752,12 @@ const HomePage = () => {
 
 
                                         }
-                                    </NativeSelect>
+                                    </NativeSelect> */}
                                 </FormControl>
                             </div>
                         </div>
                         {
-                            chooseJersey == "sepeda"  &&
+                            chooseJersey == "sepeda" &&
                             <div className="col-span-10 pl-4">
                                 <div className="w-full pt-6">
                                     <FormControl fullWidth className="w-full pt-10">
@@ -680,7 +863,7 @@ const HomePage = () => {
                             {/* </Button> */}
                         </div>
                         <div className="col-span-10 pl-4">
-                            <TextField id="description" label="Keterangan" variant="standard" className="w-full"
+                            <TextField id="description" label="Keterangan Design" variant="standard" className="w-full"
                                 value={description}
                                 onChange={(val) => {
                                     setDescription(val.target.value)
@@ -704,8 +887,11 @@ const HomePage = () => {
                                     >
                                         {
                                             typeKerah.map((item) => {
-                                                return <option key={item.name} value={item.value}>{item.name}</option>
-
+                                                if (chooseQuality == "basic" && item.value == "lainnya") {
+                                                    return ""
+                                                } else {
+                                                    return <option key={item.name} value={item.value}>{item.name}</option>
+                                                }
                                             })
                                         }
                                     </NativeSelect>
@@ -745,32 +931,43 @@ const HomePage = () => {
                                 </FormControl>
                             </div>
                         </div>
-                        <div className="col-span-10 pl-4">
-                            <div className="w-full pt-6">
-                                <FormControl fullWidth className="w-full pt-10">
-                                    <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                                        Pilih Motif Kain
-                                    </InputLabel>
-                                    <NativeSelect
-                                        // defaultValue={30}
-                                        key={"9"}
-                                        inputProps={{
-                                            name: 'motive',
-                                            id: 'motive',
-                                        }}
-                                        value={chooseMotive}
-                                        onChange={(val) => setChooseMotive(val.target.value)}
-                                    >
-                                        {
-                                            motives.map((item) => {
-                                                return <option key={item.name} value={item.value}>{item.name}</option>
+                        {
+                            chooseQuality != "basic" &&
+                            <div className="col-span-10 pl-4">
+                                <div className="w-full pt-6">
+                                    <FormControl fullWidth className="w-full pt-10">
+                                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                                            Pilih Motif Kain
+                                        </InputLabel>
+                                        <NativeSelect
+                                            // defaultValue={30}
+                                            key={"9"}
+                                            inputProps={{
+                                                name: 'motive',
+                                                id: 'motive',
+                                            }}
+                                            value={chooseMotive}
+                                            onChange={(val) => setChooseMotive(val.target.value)}
+                                        >
+                                            {
+                                                motives.map((item) => {
+                                                    if(item.value == "milano-uv" || item.value == "benzema-uv"){
+                                                        if(chooseQuality == "premium"){
+                                                            return <option key={item.name} value={item.value}>{item.name}</option>
+                                                        }else {
+                                                            return ""
+                                                        }
+                                                    }else {
+                                                        return <option key={item.name} value={item.value}>{item.name}</option>
+                                                    }
 
-                                            })
-                                        }
-                                    </NativeSelect>
-                                </FormControl>
+                                                })
+                                            }
+                                        </NativeSelect>
+                                    </FormControl>
+                                </div>
                             </div>
-                        </div>
+                        }
                         <div className="col-span-10 pl-4">
                             <div className="w-full pt-6">
                                 <FormControl className="flex">
@@ -789,7 +986,7 @@ const HomePage = () => {
                         </div>
 
                         {
-                            needExtra == "yes" && <div className="col-span-10 pl-4">
+                            needExtra == "yes" && chooseQuality != "basic" && <div className="col-span-10 pl-4">
                                 <div className="w-full pt-6">
                                     <FormControl fullWidth className="w-full pt-10">
                                         <InputLabel variant="standard" htmlFor="uncontrolled-native">
@@ -817,7 +1014,7 @@ const HomePage = () => {
                             </div>
                         }
                         {
-                            needExtra == "yes" && chooseJenisTulisanBisban == jenisTulsanBisban[2].value &&
+                            needExtra == "yes" && chooseQuality != "basic" && chooseJenisTulisanBisban == jenisTulsanBisban[2].value &&
                             <div className="col-span-10 pl-4">
                                 {/* <Button variant="contained"
                                 component="Upload File"> */}
@@ -842,7 +1039,7 @@ const HomePage = () => {
                             </div>
                         }
                         {
-                            needExtra == "yes" &&
+                            needExtra == "yes" && chooseQuality != "basic"  &&
                             <div className="col-span-10 pl-4">
                                 <div className="w-full pt-6">
                                     <FormControl fullWidth className="w-full pt-10">
@@ -871,7 +1068,7 @@ const HomePage = () => {
                             </div>
                         }
                         {
-                            needExtra == "yes"
+                            needExtra == "yes" && chooseQuality != "basic"
                             && chooseDesignInner == designInners[3].value &&
                             <div className="col-span-10 pl-4">
                                 {/* <Button variant="contained"
@@ -912,8 +1109,7 @@ const HomePage = () => {
                                                 id: 'pilihanDesignInner',
                                             }}
                                             value={chooseAuthenticLabel}
-                                            onChange={(val) => setChooseAuthenticLabel(val.target.value)}
-                                        >
+                                            onChange={(val) => setChooseAuthenticLabel(val.target.value)}>
                                             {
                                                 authenticLabel.map((item) => {
                                                     return <option key={item.name} value={item.value}>{item.name}</option>
@@ -946,6 +1142,114 @@ const HomePage = () => {
                                         // var url = window.URL.createObjectURL(blobObj);
                                         // document.getElementById("iframe-target").setAttribute("src", url);
                                         setImageAuthenticLabel(val.target.files[0]);
+                                    }}
+                                />
+                                {/* </Button> */}
+                            </div>
+                        }
+                        {
+                            needExtra == "yes" && chooseQuality == "premium" &&
+                            <div className="col-span-10 pl-4">
+                                <div className="w-full pt-6">
+                                    <FormControl fullWidth className="w-full pt-10">
+                                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                                            Pilih Care Label
+                                        </InputLabel>
+                                        <NativeSelect
+                                            // defaultValue={30}
+                                            key={"13"}
+                                            inputProps={{
+                                                name: 'pilihCareLabel',
+                                                id: 'pilihCareLabel',
+                                            }}
+                                            value={chooseCareLabel}
+                                            onChange={(val) => setchooseCareLabel(val.target.value)}>
+                                            {
+                                                careLabels.map((item) => {
+                                                    return <option key={item.name} value={item.value}>{item.name}</option>
+
+                                                })
+                                            }
+                                        </NativeSelect>
+                                    </FormControl>
+                                </div>
+                            </div>
+                        }
+                        {
+                            needExtra == "yes"  &&
+                            chooseQuality == "premium" && chooseCareLabel == careLabels[3].value &&
+                            <div className="col-span-10 pl-4">
+                                {/* <Button variant="contained"
+                                component="Upload File"> */}
+                                {
+                                    // <img id="iframe-target" className="w-56 h-auto" />
+
+                                }
+                                <p className="text-sm mb-2">
+                                    Upload Care Label
+                                </p>
+                                <input
+                                    type="file"
+                                    aria-label="Upload Care Label"
+                                    onChange={(val) => {
+                                        // var blobObj = new Blob(val.target.files[0], { type: "application/pdf" });
+                                        // var url = window.URL.createObjectURL(blobObj);
+                                        // document.getElementById("iframe-target").setAttribute("src", url);
+                                        setImageCareLabel(val.target.files[0]);
+                                    }}
+                                />
+                                {/* </Button> */}
+                            </div>
+                        }
+                        {
+                            needExtra == "yes" && chooseQuality == "premium" &&
+                            <div className="col-span-10 pl-4">
+                                <div className="w-full pt-6">
+                                    <FormControl fullWidth className="w-full pt-10">
+                                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                                            Pilih Bisban Bawah
+                                        </InputLabel>
+                                        <NativeSelect
+                                            // defaultValue={30}
+                                            key={"13"}
+                                            inputProps={{
+                                                name: 'pilihBisbanBawah',
+                                                id: 'pilihBisbanBawah',
+                                            }}
+                                            value={chooseBisbanBawah}
+                                            onChange={(val) => setchooseBisbanBawah(val.target.value)}>
+                                            {
+                                                bisbanBawah.map((item) => {
+                                                    return <option key={item.name} value={item.value}>{item.name}</option>
+
+                                                })
+                                            }
+                                        </NativeSelect>
+                                    </FormControl>
+                                </div>
+                            </div>
+                        }
+                        {
+                            needExtra == "yes"  &&
+                            chooseQuality == "premium" && chooseBisbanBawah == careLabels[3].value &&
+                            <div className="col-span-10 pl-4">
+                                {/* <Button variant="contained"
+                                component="Upload File"> */}
+                                {
+                                    // <img id="iframe-target" className="w-56 h-auto" />
+
+                                }
+                                <p className="text-sm mb-2">
+                                    Upload Bisban Bawah
+                                </p>
+                                <input
+                                    type="file"
+                                    aria-label="Upload Bisban Bawah"
+                                    onChange={(val) => {
+                                        // var blobObj = new Blob(val.target.files[0], { type: "application/pdf" });
+                                        // var url = window.URL.createObjectURL(blobObj);
+                                        // document.getElementById("iframe-target").setAttribute("src", url);
+                                        setImageBisbanBawah(val.target.files[0]);
                                     }}
                                 />
                                 {/* </Button> */}
