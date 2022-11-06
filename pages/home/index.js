@@ -580,7 +580,7 @@ const HomePage = () => {
                                         {
                                             chooseJersey == "futsal" ?
                                                 cuttingFutsal.map((item, index) => {
-                                                    return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                    return <FormControlLabel key={item.name + "cutting-fursal"} control={<Checkbox value={item.value} onChange={(val) => {
                                                         var cuttingTemp = chooseCutting;
 
                                                         if (val.target.checked == true) {
@@ -598,7 +598,7 @@ const HomePage = () => {
                                                 }) :
                                                 chooseJersey == "basket" ?
                                                     cuttingBasket.map((item, index) => {
-                                                        return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                        return <FormControlLabel key={item.name + "cutting-basket"} control={<Checkbox value={item.value} onChange={(val) => {
                                                             var cuttingTemp = chooseCutting;
 
                                                             if (val.target.checked == true) {
@@ -616,7 +616,7 @@ const HomePage = () => {
                                                     }) :
                                                     chooseJersey == "gaming" ?
                                                         cuttingGaming.map((item, index) => {
-                                                            return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                            return <FormControlLabel key={item.name + "cutting-gaming"} control={<Checkbox value={item.value} onChange={(val) => {
                                                                 var cuttingTemp = chooseCutting;
 
                                                                 if (val.target.checked == true) {
@@ -634,7 +634,7 @@ const HomePage = () => {
                                                         }) :
                                                         chooseJersey == "running" ?
                                                             cuttingRunning.map((item, index) => {
-                                                                return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                                return <FormControlLabel key={item.name + "cutting-running"} control={<Checkbox value={item.value} onChange={(val) => {
                                                                     var cuttingTemp = chooseCutting;
 
                                                                     if (val.target.checked == true) {
@@ -652,7 +652,7 @@ const HomePage = () => {
                                                             }) :
                                                             chooseJersey == "tni" ?
                                                                 cuttingTNI.map((item, index) => {
-                                                                    return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                                    return <FormControlLabel key={item.name + "cutting-tni"} control={<Checkbox value={item.value} onChange={(val) => {
                                                                         var cuttingTemp = chooseCutting;
 
                                                                         if (val.target.checked == true) {
@@ -670,7 +670,7 @@ const HomePage = () => {
                                                                 }) :
                                                                 chooseJersey == "sepeda" ?
                                                                     cuttingSepeda.map((item, index) => {
-                                                                        return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                                        return <FormControlLabel key={item.name + "cutting-sepeda"} control={<Checkbox value={item.value} onChange={(val) => {
                                                                             var cuttingTemp = chooseCutting;
 
                                                                             if (val.target.checked == true) {
@@ -687,7 +687,7 @@ const HomePage = () => {
                                                                         }} />} label={item.name} />
                                                                     }) :
                                                                     cuttingLainnya.map((item, index) => {
-                                                                        return <FormControlLabel key={item.name} control={<Checkbox value={item.value} onChange={(val) => {
+                                                                        return <FormControlLabel key={item.name + "cutting-lainnya"} control={<Checkbox value={item.value} onChange={(val) => {
                                                                             var cuttingTemp = chooseCutting;
 
                                                                             if (val.target.checked == true) {
@@ -877,18 +877,21 @@ const HomePage = () => {
                                     </InputLabel>
                                     <NativeSelect
                                         // defaultValue={30}
-                                        key={"7"}
+                                        key={"16"}
                                         inputProps={{
                                             name: 'typeKerah',
                                             id: 'typeKerah',
                                         }}
                                         value={chooseTypeKerah}
-                                        onChange={(val) => setChooseTypeKerah(val.target.value)}
+                                        onChange={(val) => {
+                                            setChooseTypeKerah(val.target.value);
+                                            setChooseKerah("");
+                                        }}
                                     >
                                         {
                                             typeKerah.map((item) => {
                                                 if (chooseQuality == "basic" && item.value == "lainnya") {
-                                                    return ""
+
                                                 } else {
                                                     return <option key={item.name} value={item.value}>{item.name}</option>
                                                 }
@@ -901,9 +904,10 @@ const HomePage = () => {
                         <div className="col-span-10 pl-4">
                             <div className="w-full pt-6">
                                 <FormControl fullWidth className="w-full pt-10">
-                                    <FormLabel id="demo-controlled-radio-buttons-group"> {
-                                        chooseTypeKerah == "standard" ? "Pilih standar kerah" : "Pilih kerah lainnya"
-                                    }</FormLabel>
+                                    <FormLabel id="demo-controlled-radio-buttons-group">
+                                        {
+                                            chooseTypeKerah == "standard" ? "Pilih standar kerah" : "Pilih kerah lainnya"
+                                        }</FormLabel>
                                     <RadioGroup
                                         aria-labelledby="demo-controlled-radio-buttons-group"
                                         name="controlled-radio-buttons-group-pilih-standar-kerah"
@@ -913,9 +917,9 @@ const HomePage = () => {
                                         }}
                                     >
                                         {
-                                            chooseTypeKerah == "standard" ?
-                                                standarKerah.map((item) => {
-                                                    return <FormControlLabel value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
+                                            chooseTypeKerah == typeKerah[1].value && chooseQuality != "basic" ?
+                                                lainnyaKerah.map((item) => {
+                                                    return <FormControlLabel key={item.name + "pilih-standar-kerah"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
                                                         {item.name}
                                                         {
                                                             item.value !== authenticLabel[3].value ?
@@ -924,8 +928,9 @@ const HomePage = () => {
                                                     </div>} />
 
                                                 }) :
-                                                lainnyaKerah.map((item) => {
-                                                    return <FormControlLabel value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
+                                                standarKerah.map((item) => {
+
+                                                    return <FormControlLabel key={item.name + "pilih-standar-kerah"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
                                                         {item.name}
                                                         {
                                                             item.value !== authenticLabel[3].value ?
@@ -1066,7 +1071,7 @@ const HomePage = () => {
                                     <FormControl fullWidth className="w-full pt-10">
                                         <FormLabel id="demo-controlled-radio-buttons-group-pilihan-design-inner"> Pilihan Design Inner</FormLabel>
                                         <RadioGroup
-                                            aria-labelledby="demo-controlled-radio-buttons-group"
+                                            aria-labelledby="demo-controlled-radio-buttons-group-pilih-design-inner"
                                             name="controlled-radio-buttons-group"
                                             value={chooseDesignInner}
                                             onChange={(val) => {
@@ -1075,7 +1080,7 @@ const HomePage = () => {
                                         >
                                             {
                                                 designInners.map((item) => {
-                                                    return <FormControlLabel value={item.value} control={<Radio />} label={<div className="flex items-center">
+                                                    return <FormControlLabel key={item.name + "pilih-design-inner"} value={item.value} control={<Radio />} label={<div className="flex items-center">
                                                         {item.name}
                                                         {
                                                             item.value !== designInners[3].value ?
@@ -1133,7 +1138,7 @@ const HomePage = () => {
                                         >
                                             {
                                                 authenticLabel.map((item) => {
-                                                    return <FormControlLabel value={item.value} control={<Radio />} label={<div className="flex items-center">
+                                                    return <FormControlLabel key={item.name + "pilih-authentic-label"} value={item.value} control={<Radio />} label={<div className="flex items-center">
                                                         {item.name}
                                                         {
                                                             item.value !== authenticLabel[3].value ?
@@ -1191,7 +1196,7 @@ const HomePage = () => {
                                         >
                                             {
                                                 careLabels.map((item) => {
-                                                    return <FormControlLabel value={item.value} control={<Radio />} label={<div className="flex items-center">
+                                                    return <FormControlLabel key={item.name + "pilih-care-label"} value={item.value} control={<Radio />} label={<div className="flex items-center">
                                                         {item.name}
                                                         {
                                                             item.value !== careLabels[3].value ?
@@ -1249,7 +1254,7 @@ const HomePage = () => {
                                         >
                                             {
                                                 bisbanBawah.map((item) => {
-                                                    return <FormControlLabel value={item.value} control={<Radio />} label={<div className="flex items-center">
+                                                    return <FormControlLabel key={item.name + "pilih-bisban-bawah"} value={item.value} control={<Radio />} label={<div className="flex items-center">
                                                         {item.name}
                                                         {
                                                             item.value !== bisbanBawah[3].value ?
