@@ -942,18 +942,6 @@ const HomePage = () => {
                                         }
 
                                     </RadioGroup>
-                                    <NativeSelect
-                                        // defaultValue={30}
-                                        key={"8"}
-                                        inputProps={{
-                                            name: 'jenisKerah',
-                                            id: 'jenisKerah',
-                                        }}
-                                        value={chooseKerah}
-                                        onChange={(val) => setChooseKerah(val.target.value)}
-                                    >
-
-                                    </NativeSelect>
                                 </FormControl>
                             </div>
                         </div>
