@@ -365,7 +365,7 @@ const HomePage = () => {
         },
         {
             "name": "Punya design sendiri",
-            "value": "punya design sendiri"
+            "value": "punya-design-sendiri"
         },
     ]
     const [chooseDesignInner, setChooseDesignInner] = useState("")
@@ -901,11 +901,42 @@ const HomePage = () => {
                         <div className="col-span-10 pl-4">
                             <div className="w-full pt-6">
                                 <FormControl fullWidth className="w-full pt-10">
-                                    <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                                    <FormLabel id="demo-controlled-radio-buttons-group"> {
+                                        chooseTypeKerah == "standard" ? "Pilih standar kerah" : "Pilih kerah lainnya"
+                                    }</FormLabel>
+                                    <RadioGroup
+                                        aria-labelledby="demo-controlled-radio-buttons-group"
+                                        name="controlled-radio-buttons-group-pilih-standar-kerah"
+                                        value={chooseKerah}
+                                        onChange={(val) => {
+                                            setChooseKerah(val.target.value)
+                                        }}
+                                    >
                                         {
-                                            chooseTypeKerah == "standard" ? "Pilih standar kerah" : "Pilih kerah lainnya"
+                                            chooseTypeKerah == "standard" ?
+                                                standarKerah.map((item) => {
+                                                    return <FormControlLabel value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
+                                                        {item.name}
+                                                        {
+                                                            item.value !== authenticLabel[3].value ?
+                                                                <img src="/src/images/example-label.png" className=" ml-5 w-24 h-auto" /> : ""
+                                                        }
+                                                    </div>} />
+
+                                                }) :
+                                                lainnyaKerah.map((item) => {
+                                                    return <FormControlLabel value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
+                                                        {item.name}
+                                                        {
+                                                            item.value !== authenticLabel[3].value ?
+                                                                <img src="/src/images/example-label.png" className=" ml-5 w-24 h-auto" /> : ""
+                                                        }
+                                                    </div>} />
+
+                                                })
                                         }
-                                    </InputLabel>
+
+                                    </RadioGroup>
                                     <NativeSelect
                                         // defaultValue={30}
                                         key={"8"}
@@ -916,17 +947,7 @@ const HomePage = () => {
                                         value={chooseKerah}
                                         onChange={(val) => setChooseKerah(val.target.value)}
                                     >
-                                        {
-                                            chooseTypeKerah == "standard" ?
-                                                standarKerah.map((item) => {
-                                                    return <option key={item.name} value={item.value}>{item.name}</option>
 
-                                                }) :
-                                                lainnyaKerah.map((item) => {
-                                                    return <option key={item.name} value={item.value}>{item.name}</option>
-
-                                                })
-                                        }
                                     </NativeSelect>
                                 </FormControl>
                             </div>
@@ -951,13 +972,13 @@ const HomePage = () => {
                                         >
                                             {
                                                 motives.map((item) => {
-                                                    if(item.value == "milano-uv" || item.value == "benzema-uv"){
-                                                        if(chooseQuality == "premium"){
+                                                    if (item.value == "milano-uv" || item.value == "benzema-uv") {
+                                                        if (chooseQuality == "premium") {
                                                             return <option key={item.name} value={item.value}>{item.name}</option>
-                                                        }else {
+                                                        } else {
                                                             return ""
                                                         }
-                                                    }else {
+                                                    } else {
                                                         return <option key={item.name} value={item.value}>{item.name}</option>
                                                     }
 
@@ -1039,30 +1060,33 @@ const HomePage = () => {
                             </div>
                         }
                         {
-                            needExtra == "yes" && chooseQuality != "basic"  &&
+                            needExtra == "yes" && chooseQuality != "basic" &&
                             <div className="col-span-10 pl-4">
                                 <div className="w-full pt-6">
                                     <FormControl fullWidth className="w-full pt-10">
-                                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                                            Pilihan Design Inner
-                                        </InputLabel>
-                                        <NativeSelect
-                                            // defaultValue={30}
-                                            key={"11"}
-                                            inputProps={{
-                                                name: 'pilihanDesignInner',
-                                                id: 'pilihanDesignInner',
-                                            }}
+                                        <FormLabel id="demo-controlled-radio-buttons-group-pilihan-design-inner"> Pilihan Design Inner</FormLabel>
+                                        <RadioGroup
+                                            aria-labelledby="demo-controlled-radio-buttons-group"
+                                            name="controlled-radio-buttons-group"
                                             value={chooseDesignInner}
-                                            onChange={(val) => setChooseDesignInner(val.target.value)}
+                                            onChange={(val) => {
+                                                setChooseDesignInner(val.target.value)
+                                            }}
                                         >
                                             {
                                                 designInners.map((item) => {
-                                                    return <option key={item.name} value={item.value}>{item.name}</option>
+                                                    return <FormControlLabel value={item.value} control={<Radio />} label={<div className="flex items-center">
+                                                        {item.name}
+                                                        {
+                                                            item.value !== designInners[3].value ?
+                                                                <img src="/src/images/example-label.png" className=" ml-5 w-24 h-auto" /> : ""
+                                                        }
+                                                    </div>} />
 
                                                 })
                                             }
-                                        </NativeSelect>
+
+                                        </RadioGroup>
                                     </FormControl>
                                 </div>
                             </div>
@@ -1098,25 +1122,29 @@ const HomePage = () => {
                             <div className="col-span-10 pl-4">
                                 <div className="w-full pt-6">
                                     <FormControl fullWidth className="w-full pt-10">
-                                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                                            Pilih Authentic Label
-                                        </InputLabel>
-                                        <NativeSelect
-                                            // defaultValue={30}
-                                            key={"12"}
-                                            inputProps={{
-                                                name: 'pilihanDesignInner',
-                                                id: 'pilihanDesignInner',
-                                            }}
+                                        <FormLabel id="demo-controlled-radio-buttons-group"> Pilih Authentic Label</FormLabel>
+                                        <RadioGroup
+                                            aria-labelledby="demo-controlled-radio-buttons-group"
+                                            name="controlled-radio-buttons-group-pilih-authentic-label"
                                             value={chooseAuthenticLabel}
-                                            onChange={(val) => setChooseAuthenticLabel(val.target.value)}>
+                                            onChange={(val) => {
+                                                setChooseAuthenticLabel(val.target.value)
+                                            }}
+                                        >
                                             {
                                                 authenticLabel.map((item) => {
-                                                    return <option key={item.name} value={item.value}>{item.name}</option>
+                                                    return <FormControlLabel value={item.value} control={<Radio />} label={<div className="flex items-center">
+                                                        {item.name}
+                                                        {
+                                                            item.value !== authenticLabel[3].value ?
+                                                                <img src="/src/images/example-label.png" className=" ml-5 w-24 h-auto" /> : ""
+                                                        }
+                                                    </div>} />
 
                                                 })
                                             }
-                                        </NativeSelect>
+
+                                        </RadioGroup>
                                     </FormControl>
                                 </div>
                             </div>
@@ -1152,31 +1180,35 @@ const HomePage = () => {
                             <div className="col-span-10 pl-4">
                                 <div className="w-full pt-6">
                                     <FormControl fullWidth className="w-full pt-10">
-                                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                                            Pilih Care Label
-                                        </InputLabel>
-                                        <NativeSelect
-                                            // defaultValue={30}
-                                            key={"13"}
-                                            inputProps={{
-                                                name: 'pilihCareLabel',
-                                                id: 'pilihCareLabel',
-                                            }}
+                                        <FormLabel id="demo-controlled-radio-buttons-group"> Pilih Care Label</FormLabel>
+                                        <RadioGroup
+                                            aria-labelledby="demo-controlled-radio-buttons-group"
+                                            name="controlled-radio-buttons-group-pilih-care-label"
                                             value={chooseCareLabel}
-                                            onChange={(val) => setchooseCareLabel(val.target.value)}>
+                                            onChange={(val) => {
+                                                setchooseCareLabel(val.target.value)
+                                            }}
+                                        >
                                             {
                                                 careLabels.map((item) => {
-                                                    return <option key={item.name} value={item.value}>{item.name}</option>
+                                                    return <FormControlLabel value={item.value} control={<Radio />} label={<div className="flex items-center">
+                                                        {item.name}
+                                                        {
+                                                            item.value !== careLabels[3].value ?
+                                                                <img src="/src/images/example-label.png" className=" ml-5 w-24 h-auto" /> : ""
+                                                        }
+                                                    </div>} />
 
                                                 })
                                             }
-                                        </NativeSelect>
+
+                                        </RadioGroup>
                                     </FormControl>
                                 </div>
                             </div>
                         }
                         {
-                            needExtra == "yes"  &&
+                            needExtra == "yes" &&
                             chooseQuality == "premium" && chooseCareLabel == careLabels[3].value &&
                             <div className="col-span-10 pl-4">
                                 {/* <Button variant="contained"
@@ -1206,31 +1238,36 @@ const HomePage = () => {
                             <div className="col-span-10 pl-4">
                                 <div className="w-full pt-6">
                                     <FormControl fullWidth className="w-full pt-10">
-                                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                                            Pilih Bisban Bawah
-                                        </InputLabel>
-                                        <NativeSelect
-                                            // defaultValue={30}
-                                            key={"13"}
-                                            inputProps={{
-                                                name: 'pilihBisbanBawah',
-                                                id: 'pilihBisbanBawah',
-                                            }}
+                                        <FormLabel id="demo-controlled-radio-buttons-group"> Pilih Bisban Bawah</FormLabel>
+                                        <RadioGroup
+                                            aria-labelledby="demo-controlled-radio-buttons-group"
+                                            name="controlled-radio-buttons-group-pilih-bisban-bawah"
                                             value={chooseBisbanBawah}
-                                            onChange={(val) => setchooseBisbanBawah(val.target.value)}>
+                                            onChange={(val) => {
+                                                setchooseBisbanBawah(val.target.value)
+                                            }}
+                                        >
                                             {
                                                 bisbanBawah.map((item) => {
-                                                    return <option key={item.name} value={item.value}>{item.name}</option>
+                                                    return <FormControlLabel value={item.value} control={<Radio />} label={<div className="flex items-center">
+                                                        {item.name}
+                                                        {
+                                                            item.value !== bisbanBawah[3].value ?
+                                                                <img src="/src/images/example-label.png" className=" ml-5 w-24 h-auto" /> : ""
+                                                        }
+                                                    </div>} />
 
                                                 })
                                             }
-                                        </NativeSelect>
+
+                                        </RadioGroup>
+
                                     </FormControl>
                                 </div>
                             </div>
                         }
                         {
-                            needExtra == "yes"  &&
+                            needExtra == "yes" &&
                             chooseQuality == "premium" && chooseBisbanBawah == careLabels[3].value &&
                             <div className="col-span-10 pl-4">
                                 {/* <Button variant="contained"
