@@ -12,6 +12,7 @@ const HomePage = () => {
     const [imageDesignFile, setImageDesignFile] = useState("");
     const [imageTulisanBisban, setImageTulisanBisban] = useState("");
     const [imageDesignInner, setImageDesignInner] = useState("");
+    const [imageDesignInnerKerah, setImageDesignInnerKerah] = useState("");
     const [imageAuthenticLabel, setImageAuthenticLabel] = useState("");
     const [imageBisbanBawah, setImageBisbanBawah] = useState("");
     const [imageCareLabel, setImageCareLabel] = useState("");
@@ -189,11 +190,13 @@ const HomePage = () => {
     const polas = [
         {
             "name": "Oblong",
-            "value": "oblong"
+            "value": "oblong",
+            "type_image": "jpeg"
         },
         {
             "name": "Raglan",
-            "value": "raglan"
+            "value": "raglan",
+            "type_image": "jpeg"
         }
     ]
     const [choosePola, setChoosePola] = useState(polas[0].value);
@@ -220,8 +223,16 @@ const HomePage = () => {
             "value": "standard"
         },
         {
-            "name": "Model Kerah lainnya",
-            "value": "lainnya"
+            "name": "Model Kerah lainnya 1",
+            "value": "lainnya-1"
+        },
+        {
+            "name": "Model Kerah lainnya 2",
+            "value": "lainnya-2"
+        },
+        {
+            "name": "Model Kerah lainnya (Gratis)",
+            "value": "lainnya-gratis"
         }
     ]
     const [chooseTypeKerah, setChooseTypeKerah] = useState(typeKerah[0].value);
@@ -229,15 +240,23 @@ const HomePage = () => {
     const standarKerah = [
         {
             "name": "O neck",
-            "value": "o-neck"
+            "value": "o-neck",
+            "type_image": "jpeg"
         },
         {
             "name": "V neck",
-            "value": "v-neck"
+            "value": "v-neck",
+            "type_image": "png"
         },
         {
-            "name": "V neck tumpul",
-            "value": "v-neck-tumpul"
+            "name": "V neck tumpuk",
+            "value": "v-neck-tumpuk",
+            "type_image": "png"
+        },
+        {
+            "name": "V neck modifikasi",
+            "value": "v-neck-modifikasi",
+            "type_image": "png"
         }
     ]
     const lainnyaKerah = [
@@ -298,12 +317,173 @@ const HomePage = () => {
             "value": "v-neck-sambung-bahu"
         }
     ]
+
+    const lainnyaKerah1 = [
+        {
+            "name": "chiang i unique",
+            "value": "chiang-i-unique",
+            "type": "png"
+        },
+        {
+            "name": "chiang i v neck insert",
+            "value": "chiang-i-v-neck-insert",
+            "type": "png"
+        },
+        {
+            "name": "chiang i",
+            "value": "chiang i",
+            "type": "png"
+        },
+        {
+            "name": "modifikasi tumpuk",
+            "value": "modifikasi tumpuk",
+            "type": "png"
+        },
+        {
+            "name": "nike 2016",
+            "value": "nike 2016",
+            "type": "png"
+        },
+        {
+            "name": "nike wave",
+            "value": "nike wave",
+            "type": "png"
+        },
+        {
+            "name": "ragneck variasi",
+            "value": "ragneck variasi",
+            "type": "png"
+        },
+        {
+            "name": "v neck sambung bahu",
+            "value": "v neck sambung bahu",
+            "type": "png"
+        },
+        {
+            "name": "v neck side",
+            "value": "v neck side",
+            "type": "png"
+        },
+        {
+            "name": "v neck vertical",
+            "value": "v neck vertical",
+            "type": "png"
+        },
+    ]
+
+    const lainnyaKerah2 = [
+        {
+            "name": "chiang i kancing",
+            "value": "chiang i kancing",
+            "type": "png"
+        },
+        {
+            "name": "chiang i kancing - 2",
+            "value": "chiang i kancing - 2",
+            "type": "png"
+        },
+        {
+            "name": "jersey cycling",
+            "value": "jersey cycling",
+            "type": "png"
+        },
+        {
+            "name": "o neck as monaco",
+            "value": "o neck as monaco",
+            "type": "png"
+        },
+        {
+            "name": "turtle neck zipper",
+            "value": "turtle neck zipper",
+            "type": "png"
+        },
+        {
+            "name": "turtle neck",
+            "value": "turtle neck",
+            "type": "png"
+        },
+        {
+            "name": "v neck wangki",
+            "value": "v neck wangki",
+            "type": "png"
+        },
+        {
+            "name": "wangki high collar",
+            "value": "wangki high collar",
+            "type": "png"
+        },
+        {
+            "name": "wangki insert",
+            "value": "wangki insert",
+            "type": "png"
+        },
+        {
+            "name": "wangki zipper",
+            "value": "wangki zipper",
+            "type": "png"
+        },
+        {
+            "name": "wangki",
+            "value": "wangki",
+            "type": "png"
+        },
+    ]
+
+    const lainnyaKerahFree = [
+        {
+            "name": "modifikasi",
+            "value": "modifikasi",
+            "type": "png"
+        },
+        {
+            "name": "nike",
+            "value": "nike",
+            "type": "png"
+        },
+        {
+            "name": "o neck tumpuk",
+            "value": "o neck tumpuk",
+            "type": "png"
+        },
+        {
+            "name": "shanghai no button",
+            "value": "shanghai no button",
+            "type": "png"
+        },
+        {
+            "name": "v neck basket",
+            "value": "v neck basket",
+            "type": "png"
+        },
+        {
+            "name": "v neck kombinasi",
+            "value": "v neck kombinasi",
+            "type": "png"
+        },
+        {
+            "name": "v neck modifikasi--",
+            "value": "v neck modifikasi--",
+            "type": "png"
+        },
+        {
+            "name": "v neck modifikasi",
+            "value": "v neck modifikasi",
+            "type": "png"
+        },
+        {
+            "name": "v neck tanpa rib",
+            "value": "v neck tanpa rib",
+            "type": "png"
+        },
+    ]
+
     const [chooseKerah, setChooseKerah] = useState("");
 
     const motives = [
         {
             "name": "Milano",
-            "value": "milano"
+            "value": "milano",
+            "type_image": "png"
         },
         {
             "name": "Milano UV",
@@ -311,19 +491,47 @@ const HomePage = () => {
         },
         {
             "name": "Benzema",
-            "value": "benzema"
+            "value": "benzema",
+            "type_image": "png"
         },
         {
             "name": "Benzema UV",
             "value": "benzema-uv"
         },
         {
-            "name": "Piqe",
-            "value": "piqe"
+            "name": "Sido Pique",
+            "value": "sido-pique",
+            "type_image": "png"
         },
         {
             "name": "Waffle",
-            "value": "waffle"
+            "value": "waffle",
+            "type_image": "png"
+        },
+        {
+            "name": "Diadora",
+            "value": "diadora",
+            "type_image": "png"
+        },
+        {
+            "name": "Jaring",
+            "value": "jaring",
+            "type_image": "png"
+        },
+        {
+            "name": "Lotto",
+            "value": "lotto",
+            "type_image": "png"
+        },
+        {
+            "name": "Parasut",
+            "value": "parasut",
+            "type_image": "png"
+        },
+        {
+            "name": "Taslan",
+            "value": "taslan",
+            "type_image": "png"
         },
         {
             "name": "Lainnya",
@@ -341,7 +549,8 @@ const HomePage = () => {
         },
         {
             "name": "tulisan brand di ulang (hasil jadinya akan di konfirmasi oleh admin)",
-            "value": "tulisan-diulang"
+            "value": "tulisan-diulang",
+            "type_image": "jpg"
         },
         {
             "name": "punya design sendiri",
@@ -353,16 +562,18 @@ const HomePage = () => {
     const designInners = [
         {
             "name": "Pilihan 1",
-            "value": "pilihan-1"
+            "value": "pilihan-1",
+            "type_image": "jpeg"
         },
         {
             "name": "Pilihan 2",
-            "value": "pilihan-2"
+            "value": "pilihan-2",
+            "type_image": "jpeg"
         },
-        {
-            "name": "Pilihan 3",
-            "value": "pilihan-3"
-        },
+        // {
+        //     "name": "Pilihan 3",
+        //     "value": "pilihan-3"
+        // },
         {
             "name": "Punya design sendiri",
             "value": "punya-design-sendiri"
@@ -370,22 +581,46 @@ const HomePage = () => {
     ]
     const [chooseDesignInner, setChooseDesignInner] = useState("")
 
-    const authenticLabel = [
+    const designInnerKerah = [
         {
             "name": "Pilihan 1",
-            "value": "pilihan-1"
+            "value": "pilihan-1",
+            "type_image": "jpeg"
         },
         {
             "name": "Pilihan 2",
-            "value": "pilihan-2"
+            "value": "pilihan-2",
+            "type_image": "jpeg"
         },
-        {
-            "name": "Pilihan 3",
-            "value": "pilihan-3"
-        },
+        // {
+        //     "name": "Pilihan 3",
+        //     "value": "pilihan-3"
+        // },
         {
             "name": "Punya design sendiri",
-            "value": "punya design sendiri"
+            "value": "punya-design-sendiri"
+        },
+    ]
+    const [chooseDesignInnerKerah, setChooseDesignInnerKerah] = useState("")
+
+    const authenticLabel = [
+        {
+            "name": "Pilihan 1",
+            "value": "pilihan-1",
+            "type_image": "jpeg"
+        },
+        {
+            "name": "Pilihan 2",
+            "value": "pilihan-2",
+            "type_image": "jpg"
+        },
+        // {
+        //     "name": "Pilihan 3",
+        //     "value": "pilihan-3"
+        // },
+        {
+            "name": "Punya design sendiri",
+            "value": "punya-design-sendiri"
         },
     ]
     const [chooseAuthenticLabel, setChooseAuthenticLabel] = useState("")
@@ -413,19 +648,21 @@ const HomePage = () => {
     const careLabels = [
         {
             "name": "Pilihan 1",
-            "value": "pilihan-1"
+            "value": "pilihan-1",
+            "type_image": "jpeg"
         },
         {
             "name": "Pilihan 2",
-            "value": "pilihan-2"
+            "value": "pilihan-2",
+            "type_image": "jpeg"
         },
-        {
-            "name": "Pilihan 3",
-            "value": "pilihan-3"
-        },
+        // {
+        //     "name": "Pilihan 3",
+        //     "value": "pilihan-3"
+        // },
         {
             "name": "Punya design sendiri",
-            "value": "punya design sendiri"
+            "value": "punya-design-sendiri"
         },
     ]
     const [chooseCareLabel, setchooseCareLabel] = useState("")
@@ -433,19 +670,20 @@ const HomePage = () => {
     const bisbanBawah = [
         {
             "name": "Pilihan 1",
-            "value": "pilihan-1"
+            "value": "tulisan-diulang",
+            "type_image": "jpg"
         },
-        {
-            "name": "Pilihan 2",
-            "value": "pilihan-2"
-        },
-        {
-            "name": "Pilihan 3",
-            "value": "pilihan-3"
-        },
+        // {
+        //     "name": "Pilihan 2",
+        //     "value": "pilihan-2"
+        // },
+        // {
+        //     "name": "Pilihan 3",
+        //     "value": "pilihan-3"
+        // },
         {
             "name": "Punya design sendiri",
-            "value": "punya design sendiri"
+            "value": "punya-design-sendiri"
         },
     ]
     const [chooseBisbanBawah, setchooseBisbanBawah] = useState("")
@@ -787,25 +1025,24 @@ const HomePage = () => {
                         <div className="col-span-10 pl-4">
                             <div className="w-full pt-6">
                                 <FormControl fullWidth className="w-full pt-10">
-                                    <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                                        Jenis Pola
-                                    </InputLabel>
-                                    <NativeSelect
-                                        // defaultValue={30}
-                                        key={"5"}
-                                        inputProps={{
-                                            name: 'pola',
-                                            id: 'pola',
-                                        }}
+                                    <FormLabel id="demo-controlled-radio-buttons-group">Jenis Pola</FormLabel>
+                                    <RadioGroup
+                                        aria-labelledby="demo-controlled-radio-buttons-group"
+                                        name="controlled-radio-buttons-group-jenis-pola"
                                         value={choosePola}
                                         onChange={(val) => setChoosePola(val.target.value)}
                                     >
                                         {
                                             polas.map((item) => {
-                                                return <option key={item.name} value={item.value}>{item.name}</option>
+                                                return <FormControlLabel key={item.name + "pilih-jenis-pola"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
+                                                    {item.name}
+                                                    {
+                                                        <img src={`/src/images/jenis_pola/${item.value}.${item.type_image}`} className=" ml-5 w-24 h-auto" />
+                                                    }
+                                                </div>} />
                                             })
                                         }
-                                    </NativeSelect>
+                                    </RadioGroup>
                                 </FormControl>
                             </div>
                         </div>
@@ -890,7 +1127,7 @@ const HomePage = () => {
                                     >
                                         {
                                             typeKerah.map((item) => {
-                                                if (chooseQuality == "basic" && item.value == "lainnya") {
+                                                if (chooseQuality == "basic" && (item.value == "lainnya-1" || item.value == "lainnya-2" || item.value == "lainnya-gratis")) {
 
                                                 } else {
                                                     return <option key={item.name} value={item.value}>{item.name}</option>
@@ -917,28 +1154,48 @@ const HomePage = () => {
                                         }}
                                     >
                                         {
-                                            chooseTypeKerah == typeKerah[1].value && chooseQuality != "basic" ?
-                                                lainnyaKerah.map((item) => {
-                                                    return <FormControlLabel key={item.name + "pilih-standar-kerah"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
+                                        chooseTypeKerah == typeKerah[1].value && chooseQuality != "basic" ?
+                                                lainnyaKerah1.map((item) => {
+                                                    return <FormControlLabel key={item.name + "pilih-lainnya-kerah-1"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
                                                         {item.name}
                                                         {
-                                                            item.value !== authenticLabel[3].value ?
-                                                                <img src="/src/images/example-label.png" className=" ml-5 w-24 h-auto" /> : ""
+                                                            // item.value !== authenticLabel[authenticLabel.length-1].value ?
+                                                            <img src={`/src/images/kerah/lainnya/1/${item.value}.${item.type}`} className=" ml-5 w-52 h-auto" />
                                                         }
                                                     </div>} />
 
-                                                }) :
-                                                standarKerah.map((item) => {
+                                                }) : chooseTypeKerah == typeKerah[2].value && chooseQuality != "basic"  ?
+                                                    lainnyaKerah2.map((item) => {
+                                                        return <FormControlLabel key={item.name + "pilih-lainnya-kerah-2"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
+                                                            {item.name}
+                                                            {
+                                                                // item.value !== authenticLabel[authenticLabel.length-1].value ?
+                                                                <img src={`/src/images/kerah/lainnya/2/${item.value}.${item.type}`} className=" ml-5 w-52 h-auto" />
+                                                            }
+                                                        </div>} />
 
-                                                    return <FormControlLabel key={item.name + "pilih-standar-kerah"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
-                                                        {item.name}
-                                                        {
-                                                            item.value !== authenticLabel[3].value ?
-                                                                <img src="/src/images/example-label.png" className=" ml-5 w-24 h-auto" /> : ""
-                                                        }
-                                                    </div>} />
+                                                    }) : chooseTypeKerah == typeKerah[3].value && chooseQuality != "basic"  ?
+                                                        lainnyaKerahFree.map((item) => {
+                                                            return <FormControlLabel key={item.name + "pilih-lainnya-kerah-free"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
+                                                                {item.name}
+                                                                {
+                                                                    // item.value !== authenticLabel[authenticLabel.length-1].value ?
+                                                                    <img src={`/src/images/kerah/lainnya/gratis/${item.value}.${item.type}`} className=" ml-5 w-52 h-auto" />
+                                                                }
+                                                            </div>} />
 
-                                                })
+                                                        }) :
+                                                        standarKerah.map((item) => {
+
+                                                            return <FormControlLabel key={item.name + "pilih-standar-kerah"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
+                                                                {item.name}
+                                                                {
+                                                                    // item.value !== authenticLabel[authenticLabel.length-1].value ?
+                                                                    <img src={`/src/images/kerah/standard/${item.value}.${item.type_image}`} className=" ml-5 w-52 h-auto" />
+                                                                }
+                                                            </div>} />
+
+                                                        })
                                         }
 
                                     </RadioGroup>
@@ -950,16 +1207,10 @@ const HomePage = () => {
                             <div className="col-span-10 pl-4">
                                 <div className="w-full pt-6">
                                     <FormControl fullWidth className="w-full pt-10">
-                                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                                            Pilih Motif Kain
-                                        </InputLabel>
-                                        <NativeSelect
-                                            // defaultValue={30}
-                                            key={"9"}
-                                            inputProps={{
-                                                name: 'motive',
-                                                id: 'motive',
-                                            }}
+                                        <FormLabel id="demo-controlled-radio-buttons-group">Pilih Motif kain</FormLabel>
+                                        <RadioGroup
+                                            aria-labelledby="demo-controlled-radio-buttons-group"
+                                            name="controlled-radio-buttons-group-jenis-pola"
                                             value={chooseMotive}
                                             onChange={(val) => setChooseMotive(val.target.value)}
                                         >
@@ -967,17 +1218,29 @@ const HomePage = () => {
                                                 motives.map((item) => {
                                                     if (item.value == "milano-uv" || item.value == "benzema-uv") {
                                                         if (chooseQuality == "premium") {
-                                                            return <option key={item.name} value={item.value}>{item.name}</option>
+                                                            return <FormControlLabel key={item.name + "pilih-motif-kain"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
+                                                                {item.name}
+                                                                {
+                                                                    item.type_image &&
+                                                                    <img src={`/src/images/motif_kain/${item.value}.${item.type_image}`} className=" ml-5 w-52 h-auto" />
+                                                                }
+                                                            </div>} />
                                                         } else {
                                                             return ""
                                                         }
                                                     } else {
-                                                        return <option key={item.name} value={item.value}>{item.name}</option>
+                                                        return <FormControlLabel key={item.name + "pilih-motif-kain"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
+                                                            {item.name}
+                                                            {
+                                                                item.type_image &&
+                                                                <img src={`/src/images/motif_kain/${item.value}.${item.type_image}`} className=" ml-5 w-52 h-auto" />
+                                                            }
+                                                        </div>} />
                                                     }
 
                                                 })
                                             }
-                                        </NativeSelect>
+                                        </RadioGroup>
                                     </FormControl>
                                 </div>
                             </div>
@@ -1003,26 +1266,27 @@ const HomePage = () => {
                             needExtra == "yes" && chooseQuality != "basic" && <div className="col-span-10 pl-4">
                                 <div className="w-full pt-6">
                                     <FormControl fullWidth className="w-full pt-10">
-                                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                                            Jenis Tulisan Bisban
-                                        </InputLabel>
-                                        <NativeSelect
-                                            // defaultValue={30}
-                                            key={"10"}
-                                            inputProps={{
-                                                name: 'jenisTulisanBisban',
-                                                id: 'jenisTulisanBisban',
-                                            }}
+                                        <FormLabel id="demo-controlled-radio-buttons-group">Jenis Tulisan Bisban</FormLabel>
+                                        <RadioGroup
+                                            aria-labelledby="demo-controlled-radio-buttons-group"
+                                            name="controlled-radio-buttons-group"
                                             value={chooseJenisTulisanBisban}
                                             onChange={(val) => setChooseJenisTulisanBisban(val.target.value)}
                                         >
                                             {
                                                 jenisTulsanBisban.map((item) => {
-                                                    return <option key={item.name} value={item.value}>{item.name}</option>
+                                                    return <FormControlLabel key={item.name + "pilih-design-inner"} value={item.value} control={<Radio />} label={<div className="flex items-center">
+                                                        {item.name}
+                                                        {
+                                                            item.type_image &&
+                                                                item.value !== designInners[designInners.length - 1].value ?
+                                                                <img src={`/src/images/detail_tambahan/bisban/${item.value}.${item.type_image}`} className=" ml-5 object-cover w-56 mt-4 h-10" /> : ""
+                                                        }
+                                                    </div>} />
 
                                                 })
                                             }
-                                        </NativeSelect>
+                                        </RadioGroup>
                                     </FormControl>
                                 </div>
                             </div>
@@ -1071,8 +1335,8 @@ const HomePage = () => {
                                                     return <FormControlLabel key={item.name + "pilih-design-inner"} value={item.value} control={<Radio />} label={<div className="flex items-center">
                                                         {item.name}
                                                         {
-                                                            item.value !== designInners[3].value ?
-                                                                <img src="/src/images/example-label.png" className=" ml-5 w-24 h-auto" /> : ""
+                                                            item.value !== designInners[designInners.length - 1].value ?
+                                                                <img src={`/src/images/detail_tambahan/inner-label/${item.value}.${item.type_image}`} className=" ml-5 w-52 mt-4 h-auto" /> : ""
                                                         }
                                                     </div>} />
 
@@ -1086,7 +1350,7 @@ const HomePage = () => {
                         }
                         {
                             needExtra == "yes" && chooseQuality != "basic"
-                            && chooseDesignInner == designInners[3].value &&
+                            && chooseDesignInner == designInners[designInners.length - 1].value &&
                             <div className="col-span-10 pl-4">
                                 {/* <Button variant="contained"
                                 component="Upload File"> */}
@@ -1111,6 +1375,64 @@ const HomePage = () => {
                             </div>
                         }
                         {
+                            needExtra == "yes" && chooseQuality != "basic" &&
+                            <div className="col-span-10 pl-4">
+                                <div className="w-full pt-6">
+                                    <FormControl fullWidth className="w-full pt-10">
+                                        <FormLabel id="demo-controlled-radio-buttons-group-pilihan-design-inner"> Pilihan Design Inner Kerah</FormLabel>
+                                        <RadioGroup
+                                            aria-labelledby="demo-controlled-radio-buttons-group-pilih-design-inner-kerah"
+                                            name="controlled-radio-buttons-group"
+                                            value={chooseDesignInnerKerah}
+                                            onChange={(val) => {
+                                                setChooseDesignInnerKerah(val.target.value)
+                                            }}
+                                        >
+                                            {
+                                                designInnerKerah.map((item) => {
+                                                    return <FormControlLabel key={item.name + "pilih-design-inner"} value={item.value} control={<Radio />} label={<div className="flex items-center">
+                                                        {item.name}
+                                                        {
+                                                            item.value !== designInnerKerah[designInnerKerah.length - 1].value ?
+                                                                <img src={`/src/images/detail_tambahan/inner-kerah/${item.value}.${item.type_image}`} className=" ml-5 w-52 mt-4 h-auto" /> : ""
+                                                        }
+                                                    </div>} />
+
+                                                })
+                                            }
+
+                                        </RadioGroup>
+                                    </FormControl>
+                                </div>
+                            </div>
+                        }
+                        {
+                            needExtra == "yes" && chooseQuality != "basic"
+                            && chooseDesignInnerKerah == designInnerKerah[designInnerKerah.length - 1].value &&
+                            <div className="col-span-10 pl-4">
+                                {/* <Button variant="contained"
+                                component="Upload File"> */}
+                                {
+                                    // <img id="iframe-target" className="w-56 h-auto" />
+
+                                }
+                                <p className="text-sm mb-2">
+                                    Upload Design Inner Kerah
+                                </p>
+                                <input
+                                    type="file"
+                                    aria-label="Upload Design Inner (Sablon DTF)"
+                                    onChange={(val) => {
+                                        // var blobObj = new Blob(val.target.files[0], { type: "application/pdf" });
+                                        // var url = window.URL.createObjectURL(blobObj);
+                                        // document.getElementById("iframe-target").setAttribute("src", url);
+                                        setImageDesignInnerKerah(val.target.files[0]);
+                                    }}
+                                />
+                                {/* </Button> */}
+                            </div>
+                        }
+                        {
                             needExtra == "yes" &&
                             <div className="col-span-10 pl-4">
                                 <div className="w-full pt-6">
@@ -1129,8 +1451,8 @@ const HomePage = () => {
                                                     return <FormControlLabel key={item.name + "pilih-authentic-label"} value={item.value} control={<Radio />} label={<div className="flex items-center">
                                                         {item.name}
                                                         {
-                                                            item.value !== authenticLabel[3].value ?
-                                                                <img src="/src/images/example-label.png" className=" ml-5 w-24 h-auto" /> : ""
+                                                            item.value !== authenticLabel[authenticLabel.length - 1].value ?
+                                                                <img src={`/src/images/detail_tambahan/authentic_label/${item.value}.${item.type_image}`} className=" ml-5 w-52 h-auto" /> : ""
                                                         }
                                                     </div>} />
 
@@ -1144,7 +1466,7 @@ const HomePage = () => {
                         }
                         {
                             needExtra == "yes"
-                            && chooseAuthenticLabel == authenticLabel[3].value &&
+                            && chooseAuthenticLabel == authenticLabel[authenticLabel.length - 1].value &&
                             <div className="col-span-10 pl-4">
                                 {/* <Button variant="contained"
                                 component="Upload File"> */}
@@ -1187,8 +1509,8 @@ const HomePage = () => {
                                                     return <FormControlLabel key={item.name + "pilih-care-label"} value={item.value} control={<Radio />} label={<div className="flex items-center">
                                                         {item.name}
                                                         {
-                                                            item.value !== careLabels[3].value ?
-                                                                <img src="/src/images/example-label.png" className=" ml-5 w-24 h-auto" /> : ""
+                                                            item.value !== careLabels[careLabels.length - 1].value ?
+                                                                <img src={`/src/images/detail_tambahan/care-label/${item.value}.${item.type_image}`} className=" ml-5 w-24 h-auto" /> : ""
                                                         }
                                                     </div>} />
 
@@ -1202,7 +1524,7 @@ const HomePage = () => {
                         }
                         {
                             needExtra == "yes" &&
-                            chooseQuality == "premium" && chooseCareLabel == careLabels[3].value &&
+                            chooseQuality == "premium" && chooseCareLabel == careLabels[careLabels.length - 1].value &&
                             <div className="col-span-10 pl-4">
                                 {/* <Button variant="contained"
                                 component="Upload File"> */}
@@ -1245,8 +1567,8 @@ const HomePage = () => {
                                                     return <FormControlLabel key={item.name + "pilih-bisban-bawah"} value={item.value} control={<Radio />} label={<div className="flex items-center">
                                                         {item.name}
                                                         {
-                                                            item.value !== bisbanBawah[3].value ?
-                                                                <img src="/src/images/example-label.png" className=" ml-5 w-24 h-auto" /> : ""
+                                                            item.value !== bisbanBawah[bisbanBawah.length - 1].value && item.type_image ?
+                                                                <img src={`/src/images/detail_tambahan/bisban/${item.value}.${item.type_image}`} className=" ml-5 w-56 h-8 object-cover" /> : ""
                                                         }
                                                     </div>} />
 
@@ -1261,7 +1583,7 @@ const HomePage = () => {
                         }
                         {
                             needExtra == "yes" &&
-                            chooseQuality == "premium" && chooseBisbanBawah == careLabels[3].value &&
+                            chooseQuality == "premium" && chooseBisbanBawah == bisbanBawah[bisbanBawah.length - 1].value &&
                             <div className="col-span-10 pl-4">
                                 {/* <Button variant="contained"
                                 component="Upload File"> */}
