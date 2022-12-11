@@ -17,7 +17,13 @@ const HomePage = () => {
     const [imageBisbanBawah, setImageBisbanBawah] = useState("");
     const [imageCareLabel, setImageCareLabel] = useState("");
     const [fileUkuran, setFileUkuran] = useState();
-    const [sumPcs, setSumPcs] = useState("");
+    const [sumPcsDewasa, setSumPcsDewasa] = useState(0);
+    const [sumPcsChild, setSumPcsChild] = useState(0);
+    const [sum, setSum] = useState(0);
+
+    useEffect(() => {
+        setSum(parseInt(sumPcsChild ? sumPcsChild : 0) + parseInt(sumPcsDewasa ? sumPcsDewasa : 0));
+    }, [sumPcsChild || sumPcsDewasa])
 
     const qualities = [
         {
@@ -1154,7 +1160,7 @@ const HomePage = () => {
                                         }}
                                     >
                                         {
-                                        chooseTypeKerah == typeKerah[1].value && chooseQuality != "basic" ?
+                                            chooseTypeKerah == typeKerah[1].value && chooseQuality != "basic" ?
                                                 lainnyaKerah1.map((item) => {
                                                     return <FormControlLabel key={item.name + "pilih-lainnya-kerah-1"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
                                                         {item.name}
@@ -1164,7 +1170,7 @@ const HomePage = () => {
                                                         }
                                                     </div>} />
 
-                                                }) : chooseTypeKerah == typeKerah[2].value && chooseQuality != "basic"  ?
+                                                }) : chooseTypeKerah == typeKerah[2].value && chooseQuality != "basic" ?
                                                     lainnyaKerah2.map((item) => {
                                                         return <FormControlLabel key={item.name + "pilih-lainnya-kerah-2"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
                                                             {item.name}
@@ -1174,7 +1180,7 @@ const HomePage = () => {
                                                             }
                                                         </div>} />
 
-                                                    }) : chooseTypeKerah == typeKerah[3].value && chooseQuality != "basic"  ?
+                                                    }) : chooseTypeKerah == typeKerah[3].value && chooseQuality != "basic" ?
                                                         lainnyaKerahFree.map((item) => {
                                                             return <FormControlLabel key={item.name + "pilih-lainnya-kerah-free"} value={item.value} control={<Radio />} label={<div className="flex items-center mt-2">
                                                                 {item.name}
@@ -1375,7 +1381,7 @@ const HomePage = () => {
                             </div>
                         }
                         {
-                            needExtra == "yes" && chooseQuality != "basic" &&
+                            needExtra == "yes" && chooseQuality == "basic" &&
                             <div className="col-span-10 pl-4">
                                 <div className="w-full pt-6">
                                     <FormControl fullWidth className="w-full pt-10">
@@ -1611,11 +1617,18 @@ const HomePage = () => {
                 }
                 {
                     <div id="field-2" className="w-full pl-4 pr-6 grid grid-cols-10 gap-4">
-                        <div className="col-span-10 pl-4 pt-8">
-                            <TextField id="sum-pcs" label="Jumlah per-pcs" variant="standard" className="w-full"
-                                value={sumPcs}
+                        <div className="col-span-5">
+                            <TextField id="sum-pcs" type={"number"} label="Jumlah per-pcs (Dewasa)" variant="standard" className="w-full"
+                                value={sumPcsDewasa}
                                 onChange={(val) => {
-                                    setSumPcs(val.target.value)
+                                    setSumPcsDewasa(val.target.value)
+                                }} />
+                        </div>
+                        <div className="col-span-5">
+                            <TextField id="sum-pcs" type={"number"} label="Jumlah per-pcs (Anak-anak)" variant="standard" className="w-full"
+                                value={sumPcsChild}
+                                onChange={(val) => {
+                                    setSumPcsChild(val.target.value)
                                 }} />
                         </div>
                         <div className="col-span-10 pl-4">
@@ -1641,12 +1654,12 @@ const HomePage = () => {
                             {/* </Button> */}
                         </div>
                         {
-                            sumPcs &&
+                            sum > 0 &&
                             <div className="col-span-10 pl-4">
-                                <p>{sumPcs < 20 ?
+                                <p>{sum < 20 ?
                                     " Estimasi Selesai : 5 hari kerja " :
-                                    sumPcs < 50 ? " Estimasi Selesai : 7 hari kerja " :
-                                        sumPcs < 100 ? " Estimasi Selesai : 14 hari kerja " :
+                                    sum < 50 ? " Estimasi Selesai : 7 hari kerja " :
+                                        sum < 100 ? " Estimasi Selesai : 14 hari kerja " :
                                             "Order kamu sedang kami proses, admin terkait akan menghubungi kamu jika ada detail yang perlu di konfirmasi. terima kasih"}
                                     <br />
                                     *Setting + 1 hari
@@ -1657,7 +1670,7 @@ const HomePage = () => {
                             </div>
                         }
                         {
-                            sumPcs &&
+                            sum > 0 &&
                             <div className="col-span-10 pl-4">
                                 <button className=" bg-yellow-500 rounded-xl py-2 px-10 text-black shadow-xl font-semibold text-xl hover:scale-105" onClick={() => {
                                     alert("Terima kasih atas pemesanannya :) \nPesananmu sudah sampai pada admin kami.")
