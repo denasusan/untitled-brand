@@ -1617,14 +1617,14 @@ const HomePage = () => {
                 }
                 {
                     <div id="field-2" className="w-full pl-4 pr-6 grid grid-cols-10 gap-4">
-                        <div className="col-span-5">
+                        <div className="lg:col-span-5 col-span-10 px-5 mt-4">
                             <TextField id="sum-pcs" type={"number"} label="Jumlah per-pcs (Dewasa)" variant="standard" className="w-full"
                                 value={sumPcsDewasa}
                                 onChange={(val) => {
                                     setSumPcsDewasa(val.target.value)
                                 }} />
                         </div>
-                        <div className="col-span-5">
+                        <div className="lg:col-span-5 col-span-10 px-5 mt-4">
                             <TextField id="sum-pcs" type={"number"} label="Jumlah per-pcs (Anak-anak)" variant="standard" className="w-full"
                                 value={sumPcsChild}
                                 onChange={(val) => {
