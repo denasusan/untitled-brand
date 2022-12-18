@@ -20,15 +20,12 @@ const HomePage = () => {
     const [sumPcsDewasa, setSumPcsDewasa] = useState(0);
     const [sumPcsChild, setSumPcsChild] = useState(0);
     const [sum, setSum] = useState(0);
-
-    useEffect(() => {
-        setSum(parseInt(sumPcsChild ? sumPcsChild : 0) + parseInt(sumPcsDewasa ? sumPcsDewasa : 0));
-    }, [sumPcsChild || sumPcsDewasa])
+    const [pricePerPcs, setPricePerPcs] = useState(0);
 
     const qualities = [
         {
             "name": "Medium (start from 80K)",
-            "value": "medium"
+            "value": "medium",
         },
         {
             "name": "Basic (start from 65K)",
@@ -76,119 +73,249 @@ const HomePage = () => {
     const cuttingFutsal = [
         {
             "name": "Baju lengan Pendek",
-            "value": "baju-lengan-pendek"
+            "value": "baju-lengan-pendek",
+            "price": {
+                "medium": 80000,
+                "premium": 100000,
+                "basic": 65000
+            }
         },
         {
             "name": "Baju lengan panjang",
-            "value": "baju-lengan-panjang"
+            "value": "baju-lengan-panjang",
+            "price": {
+                "medium": 90000,
+                "premium": 110000,
+                "basic": 75000
+            }
         },
         {
-            "name": "Celana",
-            "value": "celana"
+            "name": "Celana atau Setelan Pendek",
+            "value": "celana",
+            "price": {
+                "medium": 55000,
+                "premium": 175000,
+                "basic": 110000
+            }
         },
         {
             "name": "Lekbong",
-            "value": "lekbong"
+            "value": "lekbong",
+            "price": {
+                "medium": 75000,
+                "premium": 90000,
+                "basic": 60000
+            }
         },
     ]
     const cuttingBasket = [
         {
             "name": "Atasan Basket",
-            "value": "atasan-basket"
+            "value": "atasan-basket",
+            "price": {
+                "medium": 80000,
+                "premium": 100000,
+                "basic": 65000
+            }
         },
         {
             "name": "Celana Basket",
-            "value": "celana-basket"
+            "value": "celana-basket",
+            "price": {
+                "medium": 55000,
+                "premium": 75000,
+                "basic": 45000
+            }
         },
         {
             "name": "Baju Lengan Pendek",
-            "value": "baju-lengan-pendek"
+            "value": "baju-lengan-pendek",
+            "price": {
+                "medium": 80000,
+                "premium": 100000,
+                "basic": 65000
+            }
         },
         {
             "name": "Lainnya",
-            "value": "lainnya"
+            "value": "lainnya",
+            "price": {
+                "medium": 0,
+                "premium": 0,
+                "basic": 0
+            }
         },
     ]
     const cuttingGaming = [
         {
             "name": "Celana Panjang",
-            "value": "celana-panjang"
+            "value": "celana-panjang",
+            "price": {
+                "medium": 80000,
+                "premium": 100000,
+                "basic": 65000
+            }
         },
         {
             "name": "Baju Lengan Pendek",
-            "value": "baju-lengan-pendek"
+            "value": "baju-lengan-pendek",
+            "price": {
+                "medium": 75000,
+                "premium": 95000,
+                "basic": 60000
+            }
         },
         {
             "name": "Lainnya",
-            "value": "lainnya"
+            "value": "lainnya",
+            "price": {
+                "medium": 0,
+                "premium": 0,
+                "basic": 0
+            }
         },
     ]
     const cuttingRunning = [
         {
             "name": "Lengan Pendek",
-            "value": "lengan-pendek"
+            "value": "lengan-pendek",
+            "price": {
+                "medium": 80000,
+                "premium": 100000,
+                "basic": 65000
+            }
         },
         {
             "name": "Lekbong",
-            "value": "lekbong"
+            "value": "lekbong",
+            "price": {
+                "medium": 75000,
+                "premium": 100000,
+                "basic": 65000
+            }
         },
         {
             "name": "Celana Pendek",
-            "value": "celana-pendek"
+            "value": "celana-pendek",
+            "price": {
+                "medium": 55000,
+                "premium": 100000,
+                "basic": 65000
+            }
         },
         {
             "name": "Celana Panjang",
-            "value": "celna-panjang"
+            "value": "celna-panjang",
+            "price": {
+                "medium": 75000,
+                "premium": 100000,
+                "basic": 65000
+            }
         },
         {
             "name": "Lainnya",
-            "value": "lainnya"
+            "value": "lainnya",
+            "price": {
+                "medium": 0,
+                "premium": 0,
+                "basic": 0
+            }
         },
     ]
     const cuttingTNI = [
         {
             "name": "Celana Panjang",
-            "value": "celana-panjang"
+            "value": "celana-panjang",
+            "price": {
+                "medium": 90000,
+                "premium": 100000,
+                "basic": 65000
+            }
         },
         {
             "name": "Baju Lengan Pendek",
-            "value": "baju-lengan-pendek"
+            "value": "baju-lengan-pendek",
+            "price": {
+                "medium": 80000,
+                "premium": 100000,
+                "basic": 65000
+            }
         },
         {
             "name": "Lainnya",
-            "value": "lainnya"
+            "value": "lainnya",
+            "price": {
+                "medium": 0,
+                "premium": 0,
+                "basic": 0
+            }
         },
     ]
     const cuttingSepeda = [
         {
             "name": "MTB Tangan Panjang",
-            "value": "mtb-tangan-panjang"
+            "value": "mtb-tangan-panjang",
+            "price": {
+                "medium": 90000,
+                "premium": 110000,
+                "basic": 75000
+            }
         },
         {
             "name": "Pola Roadbike tangan pendek",
-            "value": "pola-roadbike-tangan-pendek"
+            "value": "pola-roadbike-tangan-pendek",
+            "price": {
+                "medium": 80000,
+                "premium": 100000,
+                "basic": 65000
+            }
         },
         {
             "name": "Roadbike tangan Panjang",
-            "value": "roadbike-tangan-panjang"
+            "value": "roadbike-tangan-panjang",
+            "price": {
+                "medium": 90000,
+                "premium": 110000,
+                "basic": 75000
+            }
         },
     ]
     const cuttingLainnya = [
         {
             "name": "Baju lengan pendek",
-            "value": "baju-lengan-pendek"
+            "value": "baju-lengan-pendek",
+            "price": {
+                "medium": 80000,
+                "premium": 80000,
+                "basic": 80000
+            }
         },
         {
             "name": "Baju lengan panjang",
-            "value": "baju-lengan-panjang"
+            "value": "baju-lengan-panjang",
+            "price": {
+                "medium": 90000,
+                "premium": 90000,
+                "basic": 90000
+            }
         },
         {
             "name": "Celana lengan pendek",
-            "value": "celana-lengan-pendek"
+            "value": "celana-lengan-pendek",
+            "price": {
+                "medium": 55000,
+                "premium": 55000,
+                "basic": 55000
+            }
         },
         {
             "name": "Celana lengan panjang",
-            "value": "celana-lengan-panjang"
+            "value": "celana-lengan-panjang",
+            "price": {
+                "medium": 75000,
+                "premium": 75000,
+                "basic": 75000
+            }
         },
     ]
     const [chooseCutting, setChooseCutting] = useState([]);
@@ -197,12 +324,18 @@ const HomePage = () => {
         {
             "name": "Oblong",
             "value": "oblong",
-            "type_image": "jpeg"
+            "type_image": "jpeg",
+            "price": {
+                "medium": 0,
+            }
         },
         {
             "name": "Raglan",
             "value": "raglan",
-            "type_image": "jpeg"
+            "type_image": "jpeg",
+            "price": {
+                "medium": 10000,
+            }
         }
     ]
     const [choosePola, setChoosePola] = useState(polas[0].value);
@@ -210,15 +343,24 @@ const HomePage = () => {
     const isDesignReady = [
         {
             "name": "Sudah, siap print",
-            "value": "ready"
+            "value": "ready",
+            "price": {
+                "medium": 0,
+            }
         },
         {
             "name": "Sudah tapi perlu di Setting lagi",
-            "value": "need-setting"
+            "value": "need-setting",
+            "price": {
+                "medium": 20000,
+            }
         },
         {
             "name": "Belum, perlu di design",
-            "value": "not-ready"
+            "value": "not-ready",
+            "price": {
+                "medium": 50000,
+            }
         },
     ]
     const [chooseIsDesignReady, setChooseIsDesignReady] = useState(isDesignReady[0].value);
@@ -255,8 +397,8 @@ const HomePage = () => {
             "type_image": "png"
         },
         {
-            "name": "V neck tumpuk",
-            "value": "v-neck-tumpuk",
+            "name": "V neck tumpul",
+            "value": "v-neck-tumpul",
             "type_image": "png"
         },
         {
@@ -268,59 +410,101 @@ const HomePage = () => {
     const lainnyaKerah = [
         {
             "name": "V neck tanpa rib",
-            "value": "v-neck-tanpa-rib"
+            "value": "v-neck-tanpa-rib",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "V neck sambung",
-            "value": "v-neck-sambung"
+            "value": "v-neck-sambung",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "V neck Modifikasi",
-            "value": "v-neck-modifikasi"
+            "value": "v-neck-modifikasi",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "V neck modifikasi 2",
-            "value": "v-neck-modifikasi-2"
+            "value": "v-neck-modifikasi-2",
+            "price": {
+                "medium": 10000
+            }
         },
         {
             "name": "v neck modifikasi 3",
-            "value": "v-neck-modifikasi-3"
+            "value": "v-neck-modifikasi-3",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "O neck tumpuk 2 warna",
-            "value": "o-neck-tumpuk-2-warna"
+            "value": "o-neck-tumpuk-2-warna",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "Kerah nike",
-            "value": "kerah-nike"
+            "value": "kerah-nike",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "Wangki",
-            "value": "wangki"
+            "value": "wangki",
+            "price": {
+                "medium": 20000
+            }
         },
         {
             "name": "Wangki Zipper",
-            "value": "wangki-zipper"
+            "value": "wangki-zipper",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "V neck wangki",
-            "value": "v-neck-wangki"
+            "value": "v-neck-wangki",
+            "price": {
+                "medium": 20000
+            }
         },
         {
             "name": "Ragneck Variasi",
-            "value": "ragneck-variasi"
+            "value": "ragneck-variasi",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "Chiang-i",
-            "value": "chiang-i"
+            "value": "chiang-i",
+            "price": {
+                "medium": 20000
+            }
         },
         {
             "name": "Chiang-i kancing",
-            "value": "chiang-i-kancing"
+            "value": "chiang-i-kancing",
+            "price": {
+                "medium": 20000
+            }
         },
         {
             "name": "V neck sambung bahu",
-            "value": "v-neck-sambung-bahu"
+            "value": "v-neck-sambung-bahu",
+            "price": {
+                "medium": 0
+            }
         }
     ]
 
@@ -328,52 +512,82 @@ const HomePage = () => {
         {
             "name": "chiang i unique",
             "value": "chiang-i-unique",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 20000
+            }
         },
         {
             "name": "chiang i v neck insert",
             "value": "chiang-i-v-neck-insert",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 20000
+            }
         },
         {
             "name": "chiang i",
             "value": "chiang i",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 20000
+            }
         },
         {
-            "name": "modifikasi tumpuk",
+            "name": "modifikasi tumpul",
             "value": "modifikasi tumpuk",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "nike 2016",
             "value": "nike 2016",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "nike wave",
             "value": "nike wave",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "ragneck variasi",
             "value": "ragneck variasi",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "v neck sambung bahu",
             "value": "v neck sambung bahu",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "v neck side",
             "value": "v neck side",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "v neck vertical",
             "value": "v neck vertical",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 0
+            }
         },
     ]
 
@@ -381,57 +595,90 @@ const HomePage = () => {
         {
             "name": "chiang i kancing",
             "value": "chiang i kancing",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 20000
+            }
         },
         {
             "name": "chiang i kancing - 2",
             "value": "chiang i kancing - 2",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 20000
+            }
         },
         {
             "name": "jersey cycling",
             "value": "jersey cycling",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "o neck as monaco",
             "value": "o neck as monaco",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "turtle neck zipper",
             "value": "turtle neck zipper",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "turtle neck",
             "value": "turtle neck",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 0
+            }
         },
         {
             "name": "v neck wangki",
             "value": "v neck wangki",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 20000
+            }
         },
         {
             "name": "wangki high collar",
             "value": "wangki high collar",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 20000
+            }
         },
         {
             "name": "wangki insert",
             "value": "wangki insert",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 20000
+            }
         },
         {
             "name": "wangki zipper",
             "value": "wangki zipper",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 20000
+            }
         },
         {
             "name": "wangki",
             "value": "wangki",
-            "type": "png"
+            "type": "png",
+            "price": {
+                "medium": 20000
+            }
         },
     ]
 
@@ -467,7 +714,7 @@ const HomePage = () => {
             "type": "png"
         },
         {
-            "name": "v neck modifikasi--",
+            "name": "v neck modifikasi",
             "value": "v neck modifikasi--",
             "type": "png"
         },
@@ -634,19 +881,31 @@ const HomePage = () => {
     const zippers = [
         {
             "name": "zipper full dengan saku belakang",
-            "value": "zipper-full-dengan-saku-belakang"
+            "value": "zipper-full-dengan-saku-belakang",
+            "price": {
+                "medium": 30000,
+            }
         },
         {
             "name": "zipper full tanpa saku belakang",
-            "value": "zipper-full-tanpa-saku-belakang"
+            "value": "zipper-full-tanpa-saku-belakang",
+            "price": {
+                "medium": 20000,
+            }
         },
         {
             "name": "zipper setengah dengan saku belakang",
-            "value": "zipper-setengah-dengan-saku-belakang"
+            "value": "zipper-setengah-dengan-saku-belakang",
+            "price": {
+                "medium": 25000,
+            }
         },
         {
             "name": "zipper setengah tanpa saku belakang",
-            "value": "zipper-setengah-tanpa-saku-belakang"
+            "value": "zipper-setengah-tanpa-saku-belakang",
+            "price": {
+                "medium": 20000,
+            }
         }
     ]
     const [chooseZipper, setChooseZipper] = useState(zippers[0].value);
@@ -700,6 +959,135 @@ const HomePage = () => {
     //     setImageDesign(URL.createObjectURL(imageDesignFile))
     // }, [imageDesignFile])
 
+
+    useEffect(() => {
+        setSum(parseInt(sumPcsChild ? sumPcsChild : 0) + parseInt(sumPcsDewasa ? sumPcsDewasa : 0));
+    }, [sumPcsChild || sumPcsDewasa])
+
+    useEffect(() => {
+        if (chooseQuality) {
+            const quality = chooseQuality;
+            let sumPrice = 0;
+            try {
+                // console.log("ASDASD", chooseCutting.length)
+                if(chooseJersey == "futsal"){
+                    for ( let i = 0;i< chooseCutting.length; i++){
+                        for(let j = 0; j < cuttingFutsal.length ; j++){
+                            if(cuttingFutsal[j].value == chooseCutting[i]){
+                                sumPrice = sumPrice + cuttingFutsal[j].price.medium;
+                            }
+                        }
+                    }
+                }
+                else if(chooseJersey == "basket"){
+                    for ( let i = 0;i< chooseCutting.length; i++){
+                        for(let j = 0; j < cuttingBasket.length ; j++){
+                            if(cuttingBasket[j].value == chooseCutting[i]){
+                                sumPrice = sumPrice + cuttingBasket[j].price.medium;
+                            }
+                        }
+                    }
+                }
+                else if(chooseJersey == "gaming"){
+                    for ( let i = 0;i< chooseCutting.length; i++){
+                        for(let j = 0; j < cuttingGaming.length ; j++){
+                            if(cuttingGaming[j].value == chooseCutting[i]){
+                                sumPrice = sumPrice + cuttingGaming[j].price.medium;
+                            }
+                        }
+                    }
+                }
+                else if(chooseJersey == "running"){
+                    for ( let i = 0;i< chooseCutting.length; i++){
+                        for(let j = 0; j < cuttingRunning.length ; j++){
+                            if(cuttingRunning[j].value == chooseCutting[i]){
+                                sumPrice = sumPrice + cuttingRunning[j].price.medium;
+                            }
+                        }
+                    }
+                }
+                else if(chooseJersey == "tni"){
+                    for ( let i = 0;i< chooseCutting.length; i++){
+                        for(let j = 0; j < cuttingTNI.length ; j++){
+                            if(cuttingTNI[j].value == chooseCutting[i]){
+                                sumPrice = sumPrice + cuttingTNI[j].price.medium;
+                            }
+                        }
+                    }
+                }
+                else if(chooseJersey == "sepeda"){
+                    for ( let i = 0;i< chooseCutting.length; i++){
+                        for(let j = 0; j < cuttingSepeda.length ; j++){
+                            if(cuttingSepeda[j].value == chooseCutting[i]){
+                                sumPrice = sumPrice + cuttingSepeda[j].price.medium;
+                            }
+                        }
+                    }
+                }
+                else {
+                    for ( let i = 0;i< chooseCutting.length; i++){
+                        for(let j = 0; j < cuttingLainnya.length ; j++){
+                            if(cuttingLainnya[j].value == chooseCutting[i]){
+                                sumPrice = sumPrice + cuttingLainnya[j].price.medium;
+                            }
+                        }
+                    }
+                }
+                
+                // console.log("ASDASD", chooseJersey)
+
+                if (chooseJersey == "sepeda") {
+                    for(let j = 0; j < zippers.length ; j++){
+                        if(zippers[j].value == chooseZipper){
+                            sumPrice = sumPrice + zippers[j].price.medium;
+                        }
+                    }
+                }
+
+                // sumPrice = sumPrice + choosePola?.price?.medium;
+                for(let j = 0; j < polas.length ; j++){
+                    if(polas[j].value == choosePola){
+                        sumPrice = sumPrice + polas[j].price.medium;
+                    }
+                }
+
+                if (choosePola == "oblong") {
+                    if (chooseIsDesignReady) {
+                        for(let j = 0; j < isDesignReady.length ; j++){
+                            if(isDesignReady[j].value == chooseIsDesignReady){
+                                sumPrice = sumPrice + isDesignReady[j].price.medium;
+                            }
+                        }
+                    }
+                }
+
+                if(chooseTypeKerah == "lainnya-1"){
+                    for(let j = 0; j < lainnyaKerah1.length ; j++){
+                        if(lainnyaKerah1[j].value == chooseKerah){
+                            sumPrice = sumPrice + lainnyaKerah1[j].price.medium;
+                        }
+                    }
+                }else if(chooseKerah == "lainnya-2"){
+                    for(let j = 0; j < lainnyaKerah2.length ; j++){
+                        if(lainnyaKerah2[j].value == chooseTypeKerah){
+                            sumPrice = sumPrice + lainnyaKerah2[j].price.medium;
+                        }
+                    }
+                }
+
+            } catch (error) {
+                console.log("ERROR", error);
+                
+            }
+            console.log("DASDSAd", sumPrice)
+            setPricePerPcs(sumPrice);
+
+        } else {
+            // console.log("MASUK SINO");
+        }
+    }, [sum])
+
+
     return (
         <>
             <Head>
@@ -709,7 +1097,7 @@ const HomePage = () => {
             </Head>
 
             {/* <header className="w-full min-h-screen">
-                <div className="w-full grid grid-cols-12 items-end overflow-y-auto" style={{ background: 'linear-gradient(60.42deg, #EAD26D -12.2%, rgba(255, 255, 255, 0) 120.53%)' }}>
+                <div className="w-full grid grid-cols-12 items-end overflow-y-auto" style={{ background: 'linear-gradient(60.42deg || #EAD26D -12.2%, rgba(255, 255, 255, 0) 120.53%)' }}>
                     <div className="col-span-1 text-end mb-16 font-bold">
                         Home
                     </div>
@@ -1617,20 +2005,20 @@ const HomePage = () => {
                 }
                 {
                     <div id="field-2" className="w-full pl-4 pr-6 grid grid-cols-10 gap-4">
-                        <div className="lg:col-span-5 col-span-10 px-5 mt-4">
+                        <div className="col-span-10 px-5 mt-4">
                             <TextField id="sum-pcs" type={"number"} label="Jumlah per-pcs (Dewasa)" variant="standard" className="w-full"
                                 value={sumPcsDewasa}
                                 onChange={(val) => {
                                     setSumPcsDewasa(val.target.value)
                                 }} />
                         </div>
-                        <div className="lg:col-span-5 col-span-10 px-5 mt-4">
+                        {/* <div className="lg:col-span-5 col-span-10 px-5 mt-4">
                             <TextField id="sum-pcs" type={"number"} label="Jumlah per-pcs (Anak-anak)" variant="standard" className="w-full"
                                 value={sumPcsChild}
                                 onChange={(val) => {
                                     setSumPcsChild(val.target.value)
                                 }} />
-                        </div>
+                        </div> */}
                         <div className="col-span-10 pl-4">
                             {/* <Button variant="contained"
                                 component="Upload File"> */}
@@ -1665,7 +2053,8 @@ const HomePage = () => {
                                     *Setting + 1 hari
                                     <br />
                                     *Design + 3 hari
-
+                                    <br />
+                                    <span>Total Pembayaran = {sum} x {pricePerPcs}(harga per pcs) = <strong style={{color: 'red'}}>Rp {sum * pricePerPcs}</strong></span>
                                 </p>
                             </div>
                         }
