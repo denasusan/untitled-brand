@@ -1,7 +1,7 @@
 import { Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, InputLabel, MenuItem, NativeSelect, Radio, RadioGroup, TextField } from "@material-ui/core";
 import Head from "next/head"
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const HomePage = () => {
     const [username, setUsername] = useState("");
@@ -36,7 +36,7 @@ const HomePage = () => {
             "value": "premium"
         }
     ]
-    const [chooseQuality, setChooseQuality] = useState("")
+    const [chooseQuality, setChooseQuality] = useState(qualities[0].value)
 
     const mediumJerseys = [
         {
@@ -398,7 +398,7 @@ const HomePage = () => {
         },
         {
             "name": "V neck tumpul",
-            "value": "v-neck-tumpul",
+            "value": "v-neck-tumpuk",
             "type_image": "png"
         },
         {
@@ -959,12 +959,30 @@ const HomePage = () => {
     //     setImageDesign(URL.createObjectURL(imageDesignFile))
     // }, [imageDesignFile])
 
+    const getRupiah = ({ number }) => {
+        let numberString = number.toString().replace(/^0+/, '');
+        if (numberString.length > 3) {
+          let over = numberString.length % 3;
+          let rupiah = numberString.substr(0, over);
+          let thousand = numberString.substr(over).match(/\d{3}/g);
+          if (thousand) {
+            const separator = over ? '.' : '';
+            rupiah += separator + thousand.join('.');
+            return rupiah;
+          } else {
+            return number;
+          }
+        } else {
+          return number;
+        }
+    }
 
     useEffect(() => {
         setSum(parseInt(sumPcsChild ? sumPcsChild : 0) + parseInt(sumPcsDewasa ? sumPcsDewasa : 0));
     }, [sumPcsChild || sumPcsDewasa])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        console.log("MASUK SINI")
         if (chooseQuality) {
             const quality = chooseQuality;
             let sumPrice = 0;
@@ -1085,7 +1103,7 @@ const HomePage = () => {
         } else {
             // console.log("MASUK SINO");
         }
-    }, [sum])
+    })
 
 
     return (
@@ -2054,7 +2072,7 @@ const HomePage = () => {
                                     <br />
                                     *Design + 3 hari
                                     <br />
-                                    <span>Total Pembayaran = {sum} x {pricePerPcs}(harga per pcs) = <strong style={{color: 'red'}}>Rp {sum * pricePerPcs}</strong></span>
+                                    <span>Total Pembayaran = {getRupiah({number: sum})} x {getRupiah({number: pricePerPcs})}(harga per pcs) = <strong style={{color: 'red'}}>Rp {getRupiah({number: sum * pricePerPcs})}</strong></span>
                                 </p>
                             </div>
                         }
