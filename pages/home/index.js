@@ -1155,7 +1155,29 @@ const HomePage = () => {
                         <p class="mb-2 font-semibold mr-2 text-center pt-2">Orderan {ordername} ({nomorTelphone})</p>
                         <p class="mb-2 font-semibold mr-2 text-left flex-auto">Kualitas: {qualities.find(val => val.value == chooseQuality).name}</p>
                         <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Jersery: {chooseJersey}</p>
-                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Potongan: {chooseCutting.map((item) => item)}</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Potongan: {chooseCutting.map((item) => {
+                            if (chooseJersey == "futsal") {
+                                return <span>{cuttingFutsal.find(val => val.value == item).name} <br/> </span>
+                            }
+                            else if (chooseJersey == "basket") {
+                                return <span>{cuttingBasket.find(val => val.value == item).name} <br/> </span>
+                            }
+                            else if (chooseJersey == "gaming") {
+                                return <span>{cuttingGaming.find(val => val.value == item).name} <br/> </span>
+                            }
+                            else if (chooseJersey == "running") {
+                                return <span>{cuttingRunning.find(val => val.value == item).name} <br/> </span>
+                            }
+                            else if (chooseJersey == "tni") {
+                                return <span>{cuttingTNI.find(val => val.value == item).name} <br/> </span>
+                            }
+                            else if (chooseJersey == "sepeda") {
+                                return <span>{cuttingSepeda.find(val => val.value == item).name} <br/> </span>
+                            }
+                            else {
+                                return <span>{cuttingLainnya.find(val => val.value == item).name} <br/> </span>
+                            }
+                        })}</p>
                         <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Pola: {polas.find(val => val.value == choosePola).name}</p>
                         {chooseJersey == "sepeda" && <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Zipper: {zippers.find(val => val.value == chooseZipper).name}</p>}
                         <p class="mb-2 font-semibold mr-2 text-left flex-auto">Ketersediaan Design: {isDesignReady.find(val => val.value == chooseIsDesignReady).name}</p>
