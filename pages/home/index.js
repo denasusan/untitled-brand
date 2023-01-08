@@ -1150,40 +1150,41 @@ const HomePage = () => {
 
             <main className="pb-10 bg-white relative">
                 <div class={`${openPesanan == true ? "scale-100" : "scale-0"} z-50 transition duration-500 bg-black text-center py-4 h-screen w-full fixed lg:px-4 bg-opacity-50 flex justify-center items-center`}>
-                    <div class="p-2 bg-indigo-800 max-w-lg text-left text-indigo-100 mx-3 px-3 leading-none rounded-xl flex flex-col " role="alert">
+                    <div class="p-2 bg-black max-w-lg text-left text-indigo-100 mx-3 px-3 leading-none rounded-xl flex flex-col " role="alert">
                         {/* <p class="flex self-center rounded-full bg-indigo-500 uppercase px-2 text-xs font-bold py-2 my-2">Pesanan Kamu</p> */}
                         <p class="mb-2 font-semibold mr-2 text-center pt-2">Orderan {ordername} ({nomorTelphone})</p>
-                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Kualitas: {qualities.find(val => val.value == chooseQuality).name}</p>
-                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Jersery: {chooseJersey}</p>
-                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Potongan: {chooseCutting.map((item) => {
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Kualitas: {qualities.find(val => val.value == chooseQuality)?.name}</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Jersery: {mediumJerseys.find(val => val.value == chooseJersey)?.name}</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Potongan: <br/>{chooseCutting.map((item) => {
                             if (chooseJersey == "futsal") {
-                                return <span>{cuttingFutsal.find(val => val.value == item).name} <br/> </span>
+                                return <span> - {cuttingFutsal.find(val => val.value == item)?.name} <br/> </span>
                             }
                             else if (chooseJersey == "basket") {
-                                return <span>{cuttingBasket.find(val => val.value == item).name} <br/> </span>
+                                return <span> - {cuttingBasket.find(val => val.value == item)?.name} <br/> </span>
                             }
                             else if (chooseJersey == "gaming") {
-                                return <span>{cuttingGaming.find(val => val.value == item).name} <br/> </span>
+                                return <span> - {cuttingGaming.find(val => val.value == item)?.name} <br/> </span>
                             }
                             else if (chooseJersey == "running") {
-                                return <span>{cuttingRunning.find(val => val.value == item).name} <br/> </span>
+                                return <span> - {cuttingRunning.find(val => val.value == item)?.name} <br/> </span>
                             }
                             else if (chooseJersey == "tni") {
-                                return <span>{cuttingTNI.find(val => val.value == item).name} <br/> </span>
+                                return <span> - {cuttingTNI.find(val => val.value == item)?.name} <br/> </span>
                             }
                             else if (chooseJersey == "sepeda") {
-                                return <span>{cuttingSepeda.find(val => val.value == item).name} <br/> </span>
+                                return <span> - {cuttingSepeda.find(val => val.value == item)?.name} <br/> </span>
                             }
                             else {
-                                return <span>{cuttingLainnya.find(val => val.value == item).name} <br/> </span>
+                                return <span> - {cuttingLainnya.find(val => val.value == item)?.name} <br/> </span>
                             }
                         })}</p>
-                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Pola: {polas.find(val => val.value == choosePola).name}</p>
-                        {chooseJersey == "sepeda" && <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Zipper: {zippers.find(val => val.value == chooseZipper).name}</p>}
-                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Ketersediaan Design: {isDesignReady.find(val => val.value == chooseIsDesignReady).name}</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Pola: {polas.find(val => val.value == choosePola)?.name}</p>
+                        {/* <p class="mb-2 font-semibold mr-2 text-left flex-auto">Design Image: {imageDesign}</p> */}
+                        {chooseJersey == "sepeda" && <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Zipper: {zippers.find(val => val.value == chooseZipper)?.name}</p>}
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Ketersediaan Design: {isDesignReady.find(val => val.value == chooseIsDesignReady)?.name}</p>
                         <p class="mb-2 font-semibold mr-2 text-left flex-auto">Keterangan Design: {description}</p>
-                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Type Kerah: {typeKerah.find(val => val.value == chooseTypeKerah).name}</p>
-                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Motif: {motives.find(val => val.value == chooseMotive).name}</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Type Kerah: {typeKerah.find(val => val.value == chooseTypeKerah)?.name}</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Motif: {motives.find(val => val.value == chooseMotive)?.name}</p>
                         <br/>
                         {
                             needExtra == "yes" && 
@@ -1194,50 +1195,50 @@ const HomePage = () => {
                                     chooseQuality != "basic" && <p class="font-semibold mr-2 mb-2 text-left flex-auto">Jenis Tulisan Bisban: {jenisTulsanBisban.find(val => val.value == chooseJenisTulisanBisban)?.name}</p>
                                 }
                                 {
-                                    chooseQuality != "basic" && chooseJenisTulisanBisban == jenisTulsanBisban[2].value &&
-                                    <p class="font-semibold mr-2 text-left mb-2 flex-auto">Jenis Tulisan Bisban: {imageTulisanBisban}</p>
+                                    // chooseQuality != "basic" && chooseJenisTulisanBisban == jenisTulsanBisban[2].value &&
+                                    // <p class="font-semibold mr-2 text-left mb-2 flex-auto">Jenis Tulisan Bisban: {imageTulisanBisban}</p>
                                 }
                                 {
                                     chooseQuality != "basic" &&  <p class="font-semibold mb-2 mr-2 text-left flex-auto">Design Inner: {designInners.find(val => val.value == chooseDesignInner)?.name}</p>
                                 }
                                 {
-                                    chooseQuality != "basic"
-                                    && chooseDesignInner == designInners[designInners.length - 1].value &&
-                                    <p class="font-semibold mr-2 mb-2 text-left flex-auto">Image Design inner: {imageDesignInner}</p>
+                                    // chooseQuality != "basic"
+                                    // && chooseDesignInner == designInners[designInners.length - 1].value &&
+                                    // <p class="font-semibold mr-2 mb-2 text-left flex-auto">Image Design inner: {imageDesignInner}</p>
                                 }
-                                {chooseQuality != "basic" &&  <p class="font-semibold mr-2 mb-2 text-left flex-auto">Jenis Kerah: {typeKerah.find(val => val.value == chooseKerah)?.name}</p>}
+                                {chooseQuality != "basic" &&  <p class="font-semibold mr-2 mb-2 text-left flex-auto">Jenis Kerah: {typeKerah.find(val => val.value == chooseTypeKerah)?.name}</p>}
                                 
                                 {
-                                    chooseQuality == "basic" && 
-                                    <p class="font-semibold mr-2 mb-2 text-left flex-auto">Jenis Tulisan Bisban: {jenisTulsanBisban.find(val => val.value == chooseDesignInnerKerah)?.name}</p>
+                                     <p class="font-semibold mr-2 mb-2 text-left flex-auto">
+                                        Design inner kerah: {designInnerKerah.find(val => val.value == chooseDesignInnerKerah)?.name}</p>
                                 }
                                 {
-                                    chooseQuality != "basic"
-                                    && chooseDesignInnerKerah == designInnerKerah[designInnerKerah.length - 1].value &&
-                                    <p class="font-semibold mr-2 mb-2 text-left flex-auto">Image Inner Kerah: {imageDesignInnerKerah}</p>
+                                    // chooseQuality != "basic"
+                                    // && chooseDesignInnerKerah == designInnerKerah[designInnerKerah.length - 1].value &&
+                                    // <p class="font-semibold mr-2 mb-2 text-left flex-auto">Image Inner Kerah: {imageDesignInnerKerah}</p>
                                 }
                                 {
                                    <p class="font-semibold mr-2 text-left mb-2 flex-auto">Authentic Label: {authenticLabel.find(val => val.value == chooseAuthenticLabel)?.name}</p>
                                 }
                                 {
-                                    chooseAuthenticLabel == authenticLabel[authenticLabel.length - 1].value &&
-                                    <p class="font-semibold mr-2 text-left mb-2 flex-auto">Image authentic label : {imageAuthenticLabel}</p>
+                                    // chooseAuthenticLabel == authenticLabel[authenticLabel.length - 1].value &&
+                                    // <p class="font-semibold mr-2 text-left mb-2 flex-auto">Image authentic label : {imageAuthenticLabel}</p>
                                 }
                                 {
                                     chooseQuality == "premium" &&
                                     <p class="font-semibold mr-2 mb-2 text-left flex-auto">Care Label: {careLabels.find(val => val.value == chooseCareLabel)?.name}</p>
                                 }
                                 {
-                                    chooseQuality == "premium" && chooseCareLabel == careLabels[careLabels.length - 1].value && 
-                                    <p class="font-semibold mb-2 mr-2 text-left flex-auto">Image Care Label : {imageCareLabel}</p>
+                                    // chooseQuality == "premium" && chooseCareLabel == careLabels[careLabels.length - 1].value && 
+                                    // <p class="font-semibold mb-2 mr-2 text-left flex-auto">Image Care Label : {imageCareLabel}</p>
                                 }
                                 {
                                     chooseQuality == "premium" && 
                                     <p class="font-semibold mb-2 mr-2 text-left flex-auto">Bisban Bawah: {bisbanBawah.find(val => val.value == chooseBisbanBawah)?.name}</p> 
                                 }
                                 {
-                                    chooseQuality == "premium" && chooseBisbanBawah == bisbanBawah[bisbanBawah.length - 1].value && 
-                                    <p class="font-semibold mb-2 mr-2 text-left flex-auto">Image Bisban Bawah : {imageBisbanBawah}</p>
+                                    // chooseQuality == "premium" && chooseBisbanBawah == bisbanBawah[bisbanBawah.length - 1].value && 
+                                    // <p class="font-semibold mb-2 mr-2 text-left flex-auto">Image Bisban Bawah : {imageBisbanBawah}</p>
                                 }
                             </div>
                         }
@@ -1260,7 +1261,7 @@ const HomePage = () => {
                                 </p>
                             </div>
                         }
-                        <p onClick={() => setOpenPesanan(false)} class="cursor-pointer flex self-center rounded-full bg-yellow-500 uppercase px-4 text-xl font-bold text-black py-2 my-2">Pesan Sekarang</p>
+                        <p onClick={() => setOpenPesanan(false)} class="cursor-pointer flex self-center rounded-full bg-yellow-500 uppercase px-4 text-xl font-bold text-black py-2 my-4">Pesan Sekarang</p>
                         
                     </div>
                 </div>
@@ -1621,6 +1622,7 @@ const HomePage = () => {
                             <input
                                 type="file"
                                 aria-label="Upload designmu"
+                                id="own-design"
                                 onChange={(val) => {
                                     // var blobObj = new Blob(val.target.files[0], { type: "application/pdf" });
                                     // var url = window.URL.createObjectURL(blobObj);
@@ -1837,11 +1839,14 @@ const HomePage = () => {
                                 <input
                                     type="file"
                                     aria-label="Upload tulisan bisban"
+                                    id="own-design-tulisan-bisban"
                                     onChange={(val) => {
                                         // var blobObj = new Blob(val.target.files[0], { type: "application/pdf" });
                                         // var url = window.URL.createObjectURL(blobObj);
                                         // document.getElementById("iframe-target").setAttribute("src", url);
+                                        console.log("asdsaasdsa", val.target.files[0])
                                         setImageTulisanBisban(val.target.files[0]);
+                                        
                                     }}
                                 />
                                 {/* </Button> */}
@@ -1894,6 +1899,7 @@ const HomePage = () => {
                                 </p>
                                 <input
                                     type="file"
+                                    id="own-design-inner"
                                     aria-label="Upload Design Inner (Sablon DTF)"
                                     onChange={(val) => {
                                         // var blobObj = new Blob(val.target.files[0], { type: "application/pdf" });
@@ -1906,7 +1912,7 @@ const HomePage = () => {
                             </div>
                         }
                         {
-                            needExtra == "yes" && chooseQuality == "basic" &&
+                            needExtra == "yes"  &&
                             <div className="col-span-10 pl-4">
                                 <div className="w-full pt-6">
                                     <FormControl fullWidth className="w-full pt-10">
@@ -1952,6 +1958,7 @@ const HomePage = () => {
                                 </p>
                                 <input
                                     type="file"
+                                    id="own-design-inner-sablon"
                                     aria-label="Upload Design Inner (Sablon DTF)"
                                     onChange={(val) => {
                                         // var blobObj = new Blob(val.target.files[0], { type: "application/pdf" });
@@ -2010,6 +2017,7 @@ const HomePage = () => {
                                 </p>
                                 <input
                                     type="file"
+                                    id="own-design-authentic-label"
                                     aria-label="Upload Authentic Label"
                                     onChange={(val) => {
                                         // var blobObj = new Blob(val.target.files[0], { type: "application/pdf" });
@@ -2069,6 +2077,7 @@ const HomePage = () => {
                                 <input
                                     type="file"
                                     aria-label="Upload Care Label"
+                                    id="own-design-care-label"
                                     onChange={(val) => {
                                         // var blobObj = new Blob(val.target.files[0], { type: "application/pdf" });
                                         // var url = window.URL.createObjectURL(blobObj);
@@ -2127,6 +2136,7 @@ const HomePage = () => {
                                 </p>
                                 <input
                                     type="file"
+                                    id="own-design-bisban-bawah"
                                     aria-label="Upload Bisban Bawah"
                                     onChange={(val) => {
                                         // var blobObj = new Blob(val.target.files[0], { type: "application/pdf" });
