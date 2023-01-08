@@ -21,6 +21,8 @@ const HomePage = () => {
     const [sumPcsChild, setSumPcsChild] = useState(0);
     const [sum, setSum] = useState(0);
     const [pricePerPcs, setPricePerPcs] = useState(0);
+    const [feeDesign, setFeeDesign] = useState(0);
+    const [openPesanan, setOpenPesanan] = useState(false);
 
     const qualities = [
         {
@@ -734,55 +736,55 @@ const HomePage = () => {
 
     const motives = [
         {
-            "name": "Milano",
+            "name": "Milano (Type Jersey)",
             "value": "milano",
             "type_image": "png"
         },
         {
-            "name": "Milano UV",
+            "name": "Milano UV (Type Jersey)",
             "value": "milano-uv"
         },
         {
-            "name": "Benzema",
+            "name": "Benzema (Type Jersey)",
             "value": "benzema",
             "type_image": "png"
         },
         {
-            "name": "Benzema UV",
+            "name": "Benzema UV (Type Jersey)",
             "value": "benzema-uv"
         },
         {
-            "name": "Sido Pique",
+            "name": "Sido Pique (Type Jersey)",
             "value": "sido-pique",
             "type_image": "png"
         },
         {
-            "name": "Waffle",
+            "name": "Waffle (Type Jersey)",
             "value": "waffle",
             "type_image": "png"
         },
         {
-            "name": "Diadora",
+            "name": "Diadora (Type Jaket)",
             "value": "diadora",
             "type_image": "png"
         },
         {
-            "name": "Jaring",
+            "name": "Jaring (Type Jaket)",
             "value": "jaring",
             "type_image": "png"
         },
         {
-            "name": "Lotto",
+            "name": "Lotto (Type Jaket)",
             "value": "lotto",
             "type_image": "png"
         },
         {
-            "name": "Parasut",
+            "name": "Parasut (Type Jaket)",
             "value": "parasut",
             "type_image": "png"
         },
         {
-            "name": "Taslan",
+            "name": "Taslan (Type Jaket)",
             "value": "taslan",
             "type_image": "png"
         },
@@ -962,18 +964,18 @@ const HomePage = () => {
     const getRupiah = ({ number }) => {
         let numberString = number.toString().replace(/^0+/, '');
         if (numberString.length > 3) {
-          let over = numberString.length % 3;
-          let rupiah = numberString.substr(0, over);
-          let thousand = numberString.substr(over).match(/\d{3}/g);
-          if (thousand) {
-            const separator = over ? '.' : '';
-            rupiah += separator + thousand.join('.');
-            return rupiah;
-          } else {
-            return number;
-          }
+            let over = numberString.length % 3;
+            let rupiah = numberString.substr(0, over);
+            let thousand = numberString.substr(over).match(/\d{3}/g);
+            if (thousand) {
+                const separator = over ? '.' : '';
+                rupiah += separator + thousand.join('.');
+                return rupiah;
+            } else {
+                return number;
+            }
         } else {
-          return number;
+            return number;
         }
     }
 
@@ -981,113 +983,118 @@ const HomePage = () => {
         setSum(parseInt(sumPcsChild ? sumPcsChild : 0) + parseInt(sumPcsDewasa ? sumPcsDewasa : 0));
     }, [sumPcsChild || sumPcsDewasa])
 
+    useEffect(() => {
+        setChooseCutting([])
+    }, [chooseJersey])
+
     useLayoutEffect(() => {
-        console.log("MASUK SINI")
+        // console.log("MASUK SINI")
         if (chooseQuality) {
             const quality = chooseQuality;
             let sumPrice = 0;
             try {
                 // console.log("ASDASD", chooseCutting.length)
-                if(chooseJersey == "futsal"){
-                    for ( let i = 0;i< chooseCutting.length; i++){
-                        for(let j = 0; j < cuttingFutsal.length ; j++){
-                            if(cuttingFutsal[j].value == chooseCutting[i]){
+                if (chooseJersey == "futsal") {
+                    for (let i = 0; i < chooseCutting.length; i++) {
+                        for (let j = 0; j < cuttingFutsal.length; j++) {
+                            if (cuttingFutsal[j].value == chooseCutting[i]) {
                                 sumPrice = sumPrice + cuttingFutsal[j].price.medium;
                             }
                         }
                     }
                 }
-                else if(chooseJersey == "basket"){
-                    for ( let i = 0;i< chooseCutting.length; i++){
-                        for(let j = 0; j < cuttingBasket.length ; j++){
-                            if(cuttingBasket[j].value == chooseCutting[i]){
+                else if (chooseJersey == "basket") {
+                    for (let i = 0; i < chooseCutting.length; i++) {
+                        for (let j = 0; j < cuttingBasket.length; j++) {
+                            if (cuttingBasket[j].value == chooseCutting[i]) {
                                 sumPrice = sumPrice + cuttingBasket[j].price.medium;
                             }
                         }
                     }
                 }
-                else if(chooseJersey == "gaming"){
-                    for ( let i = 0;i< chooseCutting.length; i++){
-                        for(let j = 0; j < cuttingGaming.length ; j++){
-                            if(cuttingGaming[j].value == chooseCutting[i]){
+                else if (chooseJersey == "gaming") {
+                    for (let i = 0; i < chooseCutting.length; i++) {
+                        for (let j = 0; j < cuttingGaming.length; j++) {
+                            if (cuttingGaming[j].value == chooseCutting[i]) {
                                 sumPrice = sumPrice + cuttingGaming[j].price.medium;
                             }
                         }
                     }
                 }
-                else if(chooseJersey == "running"){
-                    for ( let i = 0;i< chooseCutting.length; i++){
-                        for(let j = 0; j < cuttingRunning.length ; j++){
-                            if(cuttingRunning[j].value == chooseCutting[i]){
+                else if (chooseJersey == "running") {
+                    for (let i = 0; i < chooseCutting.length; i++) {
+                        for (let j = 0; j < cuttingRunning.length; j++) {
+                            if (cuttingRunning[j].value == chooseCutting[i]) {
                                 sumPrice = sumPrice + cuttingRunning[j].price.medium;
                             }
                         }
                     }
                 }
-                else if(chooseJersey == "tni"){
-                    for ( let i = 0;i< chooseCutting.length; i++){
-                        for(let j = 0; j < cuttingTNI.length ; j++){
-                            if(cuttingTNI[j].value == chooseCutting[i]){
+                else if (chooseJersey == "tni") {
+                    for (let i = 0; i < chooseCutting.length; i++) {
+                        for (let j = 0; j < cuttingTNI.length; j++) {
+                            if (cuttingTNI[j].value == chooseCutting[i]) {
                                 sumPrice = sumPrice + cuttingTNI[j].price.medium;
                             }
                         }
                     }
                 }
-                else if(chooseJersey == "sepeda"){
-                    for ( let i = 0;i< chooseCutting.length; i++){
-                        for(let j = 0; j < cuttingSepeda.length ; j++){
-                            if(cuttingSepeda[j].value == chooseCutting[i]){
+                else if (chooseJersey == "sepeda") {
+                    for (let i = 0; i < chooseCutting.length; i++) {
+                        for (let j = 0; j < cuttingSepeda.length; j++) {
+                            if (cuttingSepeda[j].value == chooseCutting[i]) {
                                 sumPrice = sumPrice + cuttingSepeda[j].price.medium;
                             }
                         }
                     }
                 }
                 else {
-                    for ( let i = 0;i< chooseCutting.length; i++){
-                        for(let j = 0; j < cuttingLainnya.length ; j++){
-                            if(cuttingLainnya[j].value == chooseCutting[i]){
+                    for (let i = 0; i < chooseCutting.length; i++) {
+                        for (let j = 0; j < cuttingLainnya.length; j++) {
+                            if (cuttingLainnya[j].value == chooseCutting[i]) {
                                 sumPrice = sumPrice + cuttingLainnya[j].price.medium;
                             }
                         }
                     }
                 }
-                
+
                 // console.log("ASDASD", chooseJersey)
 
                 if (chooseJersey == "sepeda") {
-                    for(let j = 0; j < zippers.length ; j++){
-                        if(zippers[j].value == chooseZipper){
+                    for (let j = 0; j < zippers.length; j++) {
+                        if (zippers[j].value == chooseZipper) {
                             sumPrice = sumPrice + zippers[j].price.medium;
                         }
                     }
                 }
 
                 // sumPrice = sumPrice + choosePola?.price?.medium;
-                for(let j = 0; j < polas.length ; j++){
-                    if(polas[j].value == choosePola){
+                for (let j = 0; j < polas.length; j++) {
+                    if (polas[j].value == choosePola) {
                         sumPrice = sumPrice + polas[j].price.medium;
                     }
                 }
 
                 if (choosePola == "oblong") {
                     if (chooseIsDesignReady) {
-                        for(let j = 0; j < isDesignReady.length ; j++){
-                            if(isDesignReady[j].value == chooseIsDesignReady){
-                                sumPrice = sumPrice + isDesignReady[j].price.medium;
+                        for (let j = 0; j < isDesignReady.length; j++) {
+                            if (isDesignReady[j].value == chooseIsDesignReady) {
+                                // sumPrice = sumPrice + isDesignReady[j].price.medium;
+                                setFeeDesign(isDesignReady[j].price.medium);
                             }
                         }
                     }
                 }
 
-                if(chooseTypeKerah == "lainnya-1"){
-                    for(let j = 0; j < lainnyaKerah1.length ; j++){
-                        if(lainnyaKerah1[j].value == chooseKerah){
+                if (chooseTypeKerah == "lainnya-1") {
+                    for (let j = 0; j < lainnyaKerah1.length; j++) {
+                        if (lainnyaKerah1[j].value == chooseKerah) {
                             sumPrice = sumPrice + lainnyaKerah1[j].price.medium;
                         }
                     }
-                }else if(chooseKerah == "lainnya-2"){
-                    for(let j = 0; j < lainnyaKerah2.length ; j++){
-                        if(lainnyaKerah2[j].value == chooseTypeKerah){
+                } else if (chooseKerah == "lainnya-2") {
+                    for (let j = 0; j < lainnyaKerah2.length; j++) {
+                        if (lainnyaKerah2[j].value == chooseTypeKerah) {
                             sumPrice = sumPrice + lainnyaKerah2[j].price.medium;
                         }
                     }
@@ -1095,9 +1102,9 @@ const HomePage = () => {
 
             } catch (error) {
                 console.log("ERROR", error);
-                
+
             }
-            console.log("DASDSAd", sumPrice)
+            // console.log("DASDSAd", sumPrice)
             setPricePerPcs(sumPrice);
 
         } else {
@@ -1141,7 +1148,100 @@ const HomePage = () => {
                 </div>
             </header> */}
 
-            <main className="pb-10 bg-white">
+            <main className="pb-10 bg-white relative">
+                <div class={`${openPesanan == true ? "scale-100" : "scale-0"} z-50 transition duration-500 bg-black text-center py-4 h-screen w-full fixed lg:px-4 bg-opacity-50 flex justify-center items-center`}>
+                    <div class="p-2 bg-indigo-800 max-w-lg text-left text-indigo-100 mx-3 px-3 leading-none rounded-xl flex flex-col " role="alert">
+                        {/* <p class="flex self-center rounded-full bg-indigo-500 uppercase px-2 text-xs font-bold py-2 my-2">Pesanan Kamu</p> */}
+                        <p class="mb-2 font-semibold mr-2 text-center pt-2">Orderan {ordername} ({nomorTelphone})</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Kualitas: {qualities.find(val => val.value == chooseQuality).name}</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Jersery: {chooseJersey}</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Potongan: {chooseCutting.map((item) => item)}</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Pola: {polas.find(val => val.value == choosePola).name}</p>
+                        {chooseJersey == "sepeda" && <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Zipper: {zippers.find(val => val.value == chooseZipper).name}</p>}
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Ketersediaan Design: {isDesignReady.find(val => val.value == chooseIsDesignReady).name}</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Keterangan Design: {description}</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Type Kerah: {typeKerah.find(val => val.value == chooseTypeKerah).name}</p>
+                        <p class="mb-2 font-semibold mr-2 text-left flex-auto">Motif: {motives.find(val => val.value == chooseMotive).name}</p>
+                        <br/>
+                        {
+                            needExtra == "yes" && 
+                            <div class="font-semibold mr-2 text-left flex-auto">
+                                <p className="text-center mb-2">Detail Tambahan</p>
+                                <br/>
+                                {
+                                    chooseQuality != "basic" && <p class="font-semibold mr-2 mb-2 text-left flex-auto">Jenis Tulisan Bisban: {jenisTulsanBisban.find(val => val.value == chooseJenisTulisanBisban)?.name}</p>
+                                }
+                                {
+                                    chooseQuality != "basic" && chooseJenisTulisanBisban == jenisTulsanBisban[2].value &&
+                                    <p class="font-semibold mr-2 text-left mb-2 flex-auto">Jenis Tulisan Bisban: {imageTulisanBisban}</p>
+                                }
+                                {
+                                    chooseQuality != "basic" &&  <p class="font-semibold mb-2 mr-2 text-left flex-auto">Design Inner: {designInners.find(val => val.value == chooseDesignInner)?.name}</p>
+                                }
+                                {
+                                    chooseQuality != "basic"
+                                    && chooseDesignInner == designInners[designInners.length - 1].value &&
+                                    <p class="font-semibold mr-2 mb-2 text-left flex-auto">Image Design inner: {imageDesignInner}</p>
+                                }
+                                {chooseQuality != "basic" &&  <p class="font-semibold mr-2 mb-2 text-left flex-auto">Jenis Kerah: {typeKerah.find(val => val.value == chooseKerah)?.name}</p>}
+                                
+                                {
+                                    chooseQuality == "basic" && 
+                                    <p class="font-semibold mr-2 mb-2 text-left flex-auto">Jenis Tulisan Bisban: {jenisTulsanBisban.find(val => val.value == chooseDesignInnerKerah)?.name}</p>
+                                }
+                                {
+                                    chooseQuality != "basic"
+                                    && chooseDesignInnerKerah == designInnerKerah[designInnerKerah.length - 1].value &&
+                                    <p class="font-semibold mr-2 mb-2 text-left flex-auto">Image Inner Kerah: {imageDesignInnerKerah}</p>
+                                }
+                                {
+                                   <p class="font-semibold mr-2 text-left mb-2 flex-auto">Authentic Label: {authenticLabel.find(val => val.value == chooseAuthenticLabel)?.name}</p>
+                                }
+                                {
+                                    chooseAuthenticLabel == authenticLabel[authenticLabel.length - 1].value &&
+                                    <p class="font-semibold mr-2 text-left mb-2 flex-auto">Image authentic label : {imageAuthenticLabel}</p>
+                                }
+                                {
+                                    chooseQuality == "premium" &&
+                                    <p class="font-semibold mr-2 mb-2 text-left flex-auto">Care Label: {careLabels.find(val => val.value == chooseCareLabel)?.name}</p>
+                                }
+                                {
+                                    chooseQuality == "premium" && chooseCareLabel == careLabels[careLabels.length - 1].value && 
+                                    <p class="font-semibold mb-2 mr-2 text-left flex-auto">Image Care Label : {imageCareLabel}</p>
+                                }
+                                {
+                                    chooseQuality == "premium" && 
+                                    <p class="font-semibold mb-2 mr-2 text-left flex-auto">Bisban Bawah: {bisbanBawah.find(val => val.value == chooseBisbanBawah)?.name}</p> 
+                                }
+                                {
+                                    chooseQuality == "premium" && chooseBisbanBawah == bisbanBawah[bisbanBawah.length - 1].value && 
+                                    <p class="font-semibold mb-2 mr-2 text-left flex-auto">Image Bisban Bawah : {imageBisbanBawah}</p>
+                                }
+                            </div>
+                        }
+                        {
+                            sum > 0 &&
+                            <div className="col-span-10 pl-4">
+                                <p>{sum < 20 ?
+                                    " Estimasi Selesai : 5 hari kerja " :
+                                    sum < 50 ? " Estimasi Selesai : 7 hari kerja " :
+                                        sum < 100 ? " Estimasi Selesai : 14 hari kerja " :
+                                            "Order kamu sedang kami proses, admin terkait akan menghubungi kamu jika ada detail yang perlu di konfirmasi. terima kasih"}
+                                    <br />
+                                    {
+                                        chooseIsDesignReady != isDesignReady[0] && <span>*Setting + 1 hari<br /></span>
+                                    }
+                                    *Design + 3 hari
+                                    <br />
+                                    <span>Total Pembayaran = {getRupiah({ number: sum })} x {getRupiah({ number: pricePerPcs })} harga per pcs {feeDesign > 0 && <span> + {getRupiah({ number: feeDesign })} (harga design)</span>} =
+                                        <strong style={{ color: 'red' }}>Rp {getRupiah({ number: (sum * pricePerPcs) + feeDesign })}</strong></span>
+                                </p>
+                            </div>
+                        }
+                        <p onClick={() => setOpenPesanan(false)} class="cursor-pointer flex self-center rounded-full bg-yellow-500 uppercase px-4 text-xl font-bold text-black py-2 my-2">Pesan Sekarang</p>
+                        
+                    </div>
+                </div>
                 <div id="field-2" className="w-full pl-4 pr-6 grid grid-cols-10 gap-4 pt-10">
                     <div className="col-span-10 pl-4">
                         <TextField id="user-name" label="Nama Kamu" variant="standard" className="w-full"
@@ -1222,9 +1322,6 @@ const HomePage = () => {
                         <div className="col-span-10 pl-4">
                             <div className="w-full pt-6">
                                 <FormControl fullWidth className="flex flex-col justify-start items-start pt-10">
-                                    {/* <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                                        Jenis Potongan
-                                    </InputLabel> */}
                                     <label>Jenis potongan</label>
                                     <FormGroup>
                                         {
@@ -2062,25 +2159,10 @@ const HomePage = () => {
                         {
                             sum > 0 &&
                             <div className="col-span-10 pl-4">
-                                <p>{sum < 20 ?
-                                    " Estimasi Selesai : 5 hari kerja " :
-                                    sum < 50 ? " Estimasi Selesai : 7 hari kerja " :
-                                        sum < 100 ? " Estimasi Selesai : 14 hari kerja " :
-                                            "Order kamu sedang kami proses, admin terkait akan menghubungi kamu jika ada detail yang perlu di konfirmasi. terima kasih"}
-                                    <br />
-                                    *Setting + 1 hari
-                                    <br />
-                                    *Design + 3 hari
-                                    <br />
-                                    <span>Total Pembayaran = {getRupiah({number: sum})} x {getRupiah({number: pricePerPcs})}(harga per pcs) = <strong style={{color: 'red'}}>Rp {getRupiah({number: sum * pricePerPcs})}</strong></span>
-                                </p>
-                            </div>
-                        }
-                        {
-                            sum > 0 &&
-                            <div className="col-span-10 pl-4">
                                 <button className=" bg-yellow-500 rounded-xl py-2 px-10 text-black shadow-xl font-semibold text-xl hover:scale-105" onClick={() => {
-                                    alert("Terima kasih atas pemesanannya :) \nPesananmu sudah sampai pada admin kami.")
+                                    setOpenPesanan(true);
+                                    console.log("ASDSADSAD")
+                                    // alert("Terima kasih atas pemesanannya :) \nPesananmu sudah sampai pada admin kami.")
                                 }}>
                                     Pesan Sekarang
                                 </button>
