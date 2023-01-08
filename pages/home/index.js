@@ -1157,25 +1157,25 @@ const HomePage = () => {
                         <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Jersery: {mediumJerseys.find(val => val.value == chooseJersey)?.name}</p>
                         <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Potongan: <br/>{chooseCutting.map((item) => {
                             if (chooseJersey == "futsal") {
-                                return <span> - {cuttingFutsal.find(val => val.value == item)?.name} <br/> </span>
+                                return <span  key={item+" show"}> - {cuttingFutsal.find(val => val.value == item)?.name} <br/> </span>
                             }
                             else if (chooseJersey == "basket") {
-                                return <span> - {cuttingBasket.find(val => val.value == item)?.name} <br/> </span>
+                                return <span key={item+" show"}> - {cuttingBasket.find(val => val.value == item)?.name} <br/> </span>
                             }
                             else if (chooseJersey == "gaming") {
-                                return <span> - {cuttingGaming.find(val => val.value == item)?.name} <br/> </span>
+                                return <span key={item+" show"}> - {cuttingGaming.find(val => val.value == item)?.name} <br/> </span>
                             }
                             else if (chooseJersey == "running") {
-                                return <span> - {cuttingRunning.find(val => val.value == item)?.name} <br/> </span>
+                                return <span key={item+" show"}> - {cuttingRunning.find(val => val.value == item)?.name} <br/> </span>
                             }
                             else if (chooseJersey == "tni") {
-                                return <span> - {cuttingTNI.find(val => val.value == item)?.name} <br/> </span>
+                                return <span key={item+" show"}> - {cuttingTNI.find(val => val.value == item)?.name} <br/> </span>
                             }
                             else if (chooseJersey == "sepeda") {
-                                return <span> - {cuttingSepeda.find(val => val.value == item)?.name} <br/> </span>
+                                return <span key={item+" show"}> - {cuttingSepeda.find(val => val.value == item)?.name} <br/> </span>
                             }
                             else {
-                                return <span> - {cuttingLainnya.find(val => val.value == item)?.name} <br/> </span>
+                                return <span key={item+" show"}> - {cuttingLainnya.find(val => val.value == item)?.name} <br/> </span>
                             }
                         })}</p>
                         <p class="mb-2 font-semibold mr-2 text-left flex-auto">Jenis Pola: {polas.find(val => val.value == choosePola)?.name}</p>
